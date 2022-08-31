@@ -39,3 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+# Quarto
+/.quarto/
+/_site/
+*.html
+*.pdf
+*_files/
