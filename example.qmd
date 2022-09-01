@@ -1,4 +1,3 @@
 ---
 title: Hello World Confluence
-format: confluence-html
 ---
