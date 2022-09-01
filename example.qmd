@@ -6,15 +6,31 @@ format:
 validate-yaml: false
 ---
 
-# Headings
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+# Markdown Basics
+## Text Formatting
 
-# Text Effects
-**strong text**
+*italics* and **bold**
 
-_Italics Text_
+
+superscript^2^ / subscript~2~
+
+
+~~strikethrough~~
+
+
+`verbatim code`
+
+## Headings
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6
+
+<!-- ## Links & Images
+<https://quarto.org>
+
+[Quarto](https://quarto.org)
+
+![Caption](https://tinyurl.com/2hy53zek) -->

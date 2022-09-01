@@ -35,12 +35,28 @@ function Space()
   return " "
 end
 
+function SoftBreak()
+  return "\n"
+end
+
+-- Helper function to convert an attributes table into
+-- a string that can be put into HTML tags.
+local function attributes(attr)
+  local attr_table = {}
+  for x,y in pairs(attr) do
+    if y and y ~= "" then
+      table.insert(attr_table, ' ' .. x .. '="' .. escape(y,true) .. '"')
+    end
+  end
+  return table.concat(attr_table)
+end
+
 -- Table to store footnotes, so they can be included at the end.
 local notes = {}
 
 -- Blocksep is used to separate block elements.
 function Blocksep()
-  return "\n"
+  return "\n\n"
 end
 
 -- This function is called once for the whole document. Parameters:
@@ -86,6 +102,53 @@ end
 
 function Strong(s)
   return "<strong>" .. s .. "</strong>"
+end
+
+function Strikeout(s)
+  return '<del>' .. s .. '</del>'
+end
+
+function Subscript(s)
+  return "<sub>" .. s .. "</sub>"
+end
+
+function Superscript(s)
+  return "<sup>" .. s .. "</sup>"
+end
+
+function BlockQuote(s)
+  return "<blockquote>\n" .. s .. "\n</blockquote>"
+end
+
+function Span(s, attr)
+  return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
+end
+
+function Div(s, attr)
+  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
+end
+
+function Code(s, attr)
+  return "<code" .. attributes(attr) .. ">" .. escape(s) .. "</code>"
+end
+
+function Link(s, tgt, tit, attr)
+  return "<a href='" .. escape(tgt,true) .. "' title='" ..
+          escape(tit,true) .. "'>" .. s .. "</a>"
+end
+
+function CaptionedImage(src, tit, caption, attr)
+  return '<div class="figure">\n<img src="' .. escape(src,true) ..
+          '" title="' .. escape(tit,true) .. '"/>\n' ..
+          '<p class="caption">' .. escape(caption) .. '</p>\n</div>'
+end
+
+function RawBlock(format, str)
+  if format == "html" then
+    return str
+  else
+    return ''
+  end
 end
 
 -- The following code will produce runtime warnings when you haven't defined
