@@ -6,7 +6,6 @@ format:
 validate-yaml: false
 ---
 
-# Markdown Basics
 ## Text Formatting
 
 *italics* and **bold**
@@ -34,3 +33,35 @@ superscript^2^ / subscript~2~
 [Quarto](https://quarto.org)
 
 ![Caption](https://tinyurl.com/2hy53zek)
+
+## Lists
+* unordered list
+    + sub-item 1
+    + sub-item 2
+        - sub-sub-item 1
+
+---
+
+*   item 2
+
+    Continued (indent 4 spaces)
+
+---
+
+1. ordered list
+2. item 2
+    i) sub-item 1
+         A.  sub-sub-item 1
+
+<!-- 
+TODO Not yet supported
+(@)  A list whose numbering
+
+continues after
+
+(@)  an interruption -->
+
+---
+
+term
+: definition

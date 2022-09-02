@@ -137,6 +137,10 @@ function BlockQuote(s)
   return "<blockquote>\n" .. s .. "\n</blockquote>"
 end
 
+function HorizontalRule()
+  return "<hr/>"
+end
+
 function Span(s, attr)
   return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
 end
@@ -188,6 +192,36 @@ function CaptionedImage(source, title, caption, attributes)
     layout = '',
     alt = titleValue,
     caption = captionValue}
+end
+
+function BulletList(items)
+  local buffer = {}
+  for _, item in pairs(items) do
+    table.insert(buffer, "<li>" .. item .. "</li>")
+  end
+  return "<ul>\n" .. table.concat(buffer, "\n") .. "\n</ul>"
+end
+
+function Plain(s)
+  return s
+end
+
+function OrderedList(items)
+  local buffer = {}
+  for _, item in pairs(items) do
+    table.insert(buffer, "<li>" .. item .. "</li>")
+  end
+  return "<ol>\n" .. table.concat(buffer, "\n") .. "\n</ol>"
+end
+
+function DefinitionList(items)
+  local buffer = {}
+  for _,item in pairs(items) do
+    local k, v = next(item)
+    table.insert(buffer, "<dt>" .. k .. "</dt>\n<dd>" ..
+            table.concat(v, "</dd>\n<dd>") .. "</dd>")
+  end
+  return "<dl>\n" .. table.concat(buffer, "\n") .. "\n</dl>"
 end
 
 function RawBlock(format, str)
