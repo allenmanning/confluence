@@ -24,9 +24,19 @@
 
 <h6>Header 6</h6>
 
-<!-- ## Links & Images
-<https://quarto.org>
+<h2>Links &amp; Images</h2>
 
-[Quarto](https://quarto.org)
+<p><a href='https://quarto.org' title=''>https://quarto.org</a></p>
 
-![Caption](https://tinyurl.com/2hy53zek) -->
+<p><a href='https://quarto.org' title=''>Quarto</a></p>
+
+<ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt="fig:"
+    ac:src="https://tinyurl.com/2hy53zek">
+        <ri:url ri:value="https://tinyurl.com/2hy53zek" />
+        <ac:caption>
+            <p>Caption</p>
+        </ac:caption>
+    </ac:image>
