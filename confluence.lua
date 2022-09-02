@@ -2,6 +2,23 @@
 -- https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html
 -- https://pandoc.org/MANUAL.html#custom-readers-and-writers
 
+local function isEmpty(s)
+  return s == nil or s == ''
+end
+
+-- from http://lua-users.org/wiki/StringInterpolation
+local interpolate = function(str, vars)
+  -- Allow replace_vars{str, vars} syntax as well as replace_vars(str, {vars})
+  if not vars then
+    vars = str
+    str = vars[1]
+  end
+  return (string.gsub(str, "({([^}]+)})",
+          function(whole, i)
+            return vars[i] or whole
+          end))
+end
+
 -- Character escaping
 local function escape(s, in_attribute)
   return s:gsub("[<>&\"']",
@@ -137,10 +154,40 @@ function Link(s, tgt, tit, attr)
           escape(tit,true) .. "'>" .. s .. "</a>"
 end
 
-function CaptionedImage(src, tit, caption, attr)
-  return '<div class="figure">\n<img src="' .. escape(src,true) ..
-          '" title="' .. escape(tit,true) .. '"/>\n' ..
-          '<p class="caption">' .. escape(caption) .. '</p>\n</div>'
+function Image(s, src, tit, attr)
+  return "<img src='" .. escape(src,true) .. "' title='" ..
+          escape(tit,true) .. "'/>"
+end
+
+function CaptionedImage(source, title, caption, attributes)
+  local CAPTION_SNIPPET = [[<ac:caption>
+            <p>{caption}</p>
+        </ac:caption>]]
+
+  local IMAGE_SNIPPET = [[<ac:image
+    ac:align="{align}"
+    ac:layout="{layout}"
+    ac:alt="{alt}"
+    ac:src="{source}">
+        <ri:url ri:value="{source}" />
+        {caption}
+    </ac:image>]]
+
+  local sourceValue = escape(source, true)
+  local titleValue = escape(title, true)
+  local captionValue = escape(caption)
+  if not isEmpty(captionValue) then
+    captionValue =
+      interpolate {CAPTION_SNIPPET, caption = captionValue}
+  end
+
+  return interpolate {
+    IMAGE_SNIPPET,
+    source = sourceValue,
+    align = '',
+    layout = '',
+    alt = titleValue,
+    caption = captionValue}
 end
 
 function RawBlock(format, str)

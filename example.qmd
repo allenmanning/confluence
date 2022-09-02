@@ -28,9 +28,9 @@ superscript^2^ / subscript~2~
 ##### Header 5
 ###### Header 6
 
-<!-- ## Links & Images
+## Links & Images
 <https://quarto.org>
 
 [Quarto](https://quarto.org)
 
-![Caption](https://tinyurl.com/2hy53zek) -->
+![Caption](https://tinyurl.com/2hy53zek)
