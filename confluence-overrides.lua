@@ -68,31 +68,29 @@ function CaptionedImageConfluence(source, title, caption)
     caption = captionValue}
 end
 
-function CodeBlockConfluence(codeValue, attr)
-  --TODO add Confluence CodeBlock
-  --TODO group Confluence Overrides together
-  print(attr)
-  local languageValue = attr and attr.class or ''
-  local CODE_SNIPPET = [[
-    <ac:structured-macro
+function CodeBlockConfluence(codeValue, attributes)
+  local languageValue = attributes and attributes.class or ''
+  local CODE_SNIPPET = [[<ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
         <ac:parameter ac:name="language">{languageValue}</ac:parameter>
         <ac:plain-text-body>
-          <!\[CDATA\[{codeValue}\]\]>
+          <![CDATA[{codeValue}{doubleBraket}>
         </ac:plain-text-body>
-    </ac:structured-macro>
-  ]]
+    </ac:structured-macro>]]
 
   return interpolate {
     CODE_SNIPPET,
     languageValue = languageValue,
-    codeValue = codeValue}
+    codeValue = codeValue,
+    doubleBraket = ']]'
+  }
 end
 
 return {
   CaptionedImageConfluence = CaptionedImageConfluence,
   CodeBlockConfluence = CodeBlockConfluence,
-  escape = escape
+  escape = escape,
+  interpolate = interpolate
 }

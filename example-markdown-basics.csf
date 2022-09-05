@@ -123,35 +123,32 @@ continues after
 
 <h2 id="source-code">Source Code</h2>
 
-    <ac:structured-macro
+<ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
         <ac:parameter ac:name="language"></ac:parameter>
         <ac:plain-text-body>
-          <!\[CDATA\[code\]\]>
+          <![CDATA[code]]>
         </ac:plain-text-body>
     </ac:structured-macro>
-  
 
-    <ac:structured-macro
+<ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
         <ac:parameter ac:name="language">python</ac:parameter>
         <ac:plain-text-body>
-          <!\[CDATA\[1 + 1\]\]>
+          <![CDATA[1 + 1]]>
         </ac:plain-text-body>
     </ac:structured-macro>
-  
 
-    <ac:structured-macro
+<ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
         <ac:parameter ac:name="language">default</ac:parameter>
         <ac:plain-text-body>
-          <!\[CDATA\[code\]\]>
+          <![CDATA[code]]>
         </ac:plain-text-body>
     </ac:structured-macro>
-  
