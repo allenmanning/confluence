@@ -2,59 +2,31 @@
 -- https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html
 -- https://pandoc.org/MANUAL.html#custom-readers-and-writers
 
-local function isEmpty(s)
-  return s == nil or s == ''
-end
+local pipe = pandoc.pipe
+local stringify = (require "pandoc.utils").stringify
+local confluence = require('confluence-overrides')
 
--- from http://lua-users.org/wiki/StringInterpolation
-local interpolate = function(str, vars)
-  -- Allow replace_vars{str, vars} syntax as well as replace_vars(str, {vars})
-  if not vars then
-    vars = str
-    str = vars[1]
-  end
-  return (string.gsub(str, "({([^}]+)})",
-          function(whole, i)
-            return vars[i] or whole
-          end))
-end
+-- The global variable PANDOC_DOCUMENT contains the full AST of
+-- the document which is going to be written. It can be used to
+-- configure the writer.
+local meta = PANDOC_DOCUMENT.meta
+
+-- Choose the image format based on the value of the
+-- `image_format` meta value.
+local image_format = meta.image_format
+        and stringify(meta.image_format)
+        or "png"
+local image_mime_type = ({
+  jpeg = "image/jpeg",
+  jpg = "image/jpeg",
+  gif = "image/gif",
+  png = "image/png",
+  svg = "image/svg+xml",
+})[image_format]
+        or error("unsupported image format `" .. image_format .. "`")
 
 -- Character escaping
-local function escape(s, in_attribute)
-  return s:gsub("[<>&\"']",
-          function(x)
-            if x == '<' then
-              return '&lt;'
-            elseif x == '>' then
-              return '&gt;'
-            elseif x == '&' then
-              return '&amp;'
-            elseif in_attribute and x == '"' then
-              return '&quot;'
-            elseif in_attribute and x == "'" then
-              return '&#39;'
-            else
-              return x
-            end
-          end)
-end
-
--- The functions that follow render corresponding pandoc elements.
--- s is always a string, attr is always a table of attributes, and
--- items is always an array of strings (the items in a list).
--- Comments indicate the types of other variables.
-
-function Str(s)
-  return escape(s)
-end
-
-function Space()
-  return " "
-end
-
-function SoftBreak()
-  return "\n"
-end
+local escape = confluence.escape
 
 -- Helper function to convert an attributes table into
 -- a string that can be put into HTML tags.
@@ -97,20 +69,25 @@ function Doc(body, metadata, variables)
   return table.concat(buffer,'\n') .. '\n'
 end
 
-function Header(level, s)
-  return "<h" .. level ..  ">" .. s .. "</h" .. level .. ">"
+-- The functions that follow render corresponding pandoc elements.
+-- s is always a string, attr is always a table of attributes, and
+-- items is always an array of strings (the items in a list).
+-- Comments indicate the types of other variables.
+
+function Str(s)
+  return escape(s)
 end
 
-function Para(s)
-  return "<p>" .. s .. "</p>"
+function Space()
+  return " "
 end
 
-function RawInline(format, str)
-  if format == "html" then
-    return str
-  else
-    return ''
-  end
+function SoftBreak()
+  return "\n"
+end
+
+function LineBreak()
+  return "<br/>"
 end
 
 function Emph(s)
@@ -121,10 +98,6 @@ function Strong(s)
   return "<strong>" .. s .. "</strong>"
 end
 
-function Strikeout(s)
-  return '<del>' .. s .. '</del>'
-end
-
 function Subscript(s)
   return "<sub>" .. s .. "</sub>"
 end
@@ -133,34 +106,12 @@ function Superscript(s)
   return "<sup>" .. s .. "</sup>"
 end
 
-function BlockQuote(s)
-  return "<blockquote>\n" .. s .. "\n</blockquote>"
+function SmallCaps(s)
+  return '<span style="font-variant: small-caps;">' .. s .. '</span>'
 end
 
-function HorizontalRule()
-  return "<hr/>"
-end
-
---function CodeBlock(s, attr)
---  TODO add Confluence CodeBlock
---  TODO group Confluence Overrides together
---  <ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
-  --    <ac:plain-text-body>
-  --        <![CDATA[code]]>
-  --    </ac:plain-text-body>
-  --</ac:structured-macro>
---end
-
-function Span(s, attr)
-  return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
-end
-
-function Div(s, attr)
-  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
-end
-
-function Code(s, attr)
-  return "<code" .. attributes(attr) .. ">" .. escape(s) .. "</code>"
+function Strikeout(s)
+  return '<del>' .. s .. '</del>'
 end
 
 function Link(s, tgt, tit, attr)
@@ -173,49 +124,87 @@ function Image(s, src, tit, attr)
           escape(tit,true) .. "'/>"
 end
 
--- Convert pandoc alignment to something HTML can use.
--- align is AlignLeft, AlignRight, AlignCenter, or AlignDefault.
-local function html_align(align)
-  if align == 'AlignLeft' then
-    return 'left'
-  elseif align == 'AlignRight' then
-    return 'right'
-  elseif align == 'AlignCenter' then
-    return 'center'
+function Code(s, attr)
+  return "<code" .. attributes(attr) .. ">" .. escape(s) .. "</code>"
+end
+
+function InlineMath(s)
+  return "\\(" .. escape(s) .. "\\)"
+end
+
+function DisplayMath(s)
+  return "\\[" .. escape(s) .. "\\]"
+end
+
+function SingleQuoted(s)
+  return "&lsquo;" .. s .. "&rsquo;"
+end
+
+function DoubleQuoted(s)
+  return "&ldquo;" .. s .. "&rdquo;"
+end
+
+function Note(s)
+  local num = #notes + 1
+  -- insert the back reference right before the final closing tag.
+  s = string.gsub(s,
+          '(.*)</', '%1 <a href="#fnref' .. num ..  '">&#8617;</a></')
+  -- add a list item with the note to the note table.
+  table.insert(notes, '<li id="fn' .. num .. '">' .. s .. '</li>')
+  -- return the footnote reference, linked to the note.
+  return '<a id="fnref' .. num .. '" href="#fn' .. num ..
+          '"><sup>' .. num .. '</sup></a>'
+end
+
+function Span(s, attr)
+  return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
+end
+
+function RawInline(format, str)
+  if format == "html" then
+    return str
   else
-    return 'left'
+    return ''
   end
 end
 
-function CaptionedImage(source, title, caption, attributes)
-  local CAPTION_SNIPPET = [[<ac:caption>
-            <p>{caption}</p>
-        </ac:caption>]]
-
-  local IMAGE_SNIPPET = [[<ac:image
-    ac:align="{align}"
-    ac:layout="{layout}"
-    ac:alt="{alt}"
-    ac:src="{source}">
-        <ri:url ri:value="{source}" />
-        {caption}
-    </ac:image>]]
-
-  local sourceValue = escape(source, true)
-  local titleValue = escape(title, true)
-  local captionValue = escape(caption)
-  if not isEmpty(captionValue) then
-    captionValue =
-      interpolate {CAPTION_SNIPPET, caption = captionValue}
+function Cite(s, cs)
+  local ids = {}
+  for _,cit in ipairs(cs) do
+    table.insert(ids, cit.citationId)
   end
+  return "<span class=\"cite\" data-citation-ids=\"" .. table.concat(ids, ",") ..
+          "\">" .. s .. "</span>"
+end
 
-  return interpolate {
-    IMAGE_SNIPPET,
-    source = sourceValue,
-    align = '',
-    layout = '',
-    alt = titleValue,
-    caption = captionValue}
+function Plain(s)
+  return s
+end
+
+function Para(s)
+  return "<p>" .. s .. "</p>"
+end
+
+-- lev is an integer, the header level.
+function Header(lev, s, attr)
+  return "<h" .. lev .. attributes(attr) ..  ">" .. s .. "</h" .. lev .. ">"
+end
+
+function BlockQuote(s)
+  return "<blockquote>\n" .. s .. "\n</blockquote>"
+end
+
+function HorizontalRule()
+  return "<hr/>"
+end
+
+function LineBlock(ls)
+  return '<div style="white-space: pre-line;">' .. table.concat(ls, '\n') ..
+          '</div>'
+end
+
+function CodeBlock(s, attr)
+  return confluence.CodeBlockConfluence(s, attr)
 end
 
 function BulletList(items)
@@ -224,10 +213,6 @@ function BulletList(items)
     table.insert(buffer, "<li>" .. item .. "</li>")
   end
   return "<ul>\n" .. table.concat(buffer, "\n") .. "\n</ul>"
-end
-
-function Plain(s)
-  return s
 end
 
 function OrderedList(items)
@@ -248,12 +233,22 @@ function DefinitionList(items)
   return "<dl>\n" .. table.concat(buffer, "\n") .. "\n</dl>"
 end
 
-function RawBlock(format, str)
-  if format == "html" then
-    return str
+-- Convert pandoc alignment to something HTML can use.
+-- align is AlignLeft, AlignRight, AlignCenter, or AlignDefault.
+local function html_align(align)
+  if align == 'AlignLeft' then
+    return 'left'
+  elseif align == 'AlignRight' then
+    return 'right'
+  elseif align == 'AlignCenter' then
+    return 'center'
   else
-    return ''
+    return 'left'
   end
+end
+
+function CaptionedImage(src, tit, caption, attr)
+  return confluence.CaptionedImageConfluence(src, tit, caption, attr)
 end
 
 -- Caption is a string, aligns is an array of strings,
@@ -300,6 +295,18 @@ function Table(caption, aligns, widths, headers, rows)
   end
   add('</table>')
   return table.concat(buffer,'\n')
+end
+
+function RawBlock(format, str)
+  if format == "html" then
+    return str
+  else
+    return ''
+  end
+end
+
+function Div(s, attr)
+  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
 end
 
 -- The following code will produce runtime warnings when you haven't defined
