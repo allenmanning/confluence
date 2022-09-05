@@ -1,4 +1,4 @@
-<h2>Text Formatting</h2>
+<h2 id="text-formatting">Text Formatting</h2>
 
 <p><em>italics</em> and <strong>bold</strong></p>
 
@@ -8,21 +8,21 @@
 
 <p><code>verbatim code</code></p>
 
-<h2>Headings</h2>
+<h2 id="headings">Headings</h2>
 
-<h1>Header 1</h1>
+<h1 id="header-1">Header 1</h1>
 
-<h2>Header 2</h2>
+<h2 id="header-2">Header 2</h2>
 
-<h3>Header 3</h3>
+<h3 id="header-3">Header 3</h3>
 
-<h4>Header 4</h4>
+<h4 id="header-4">Header 4</h4>
 
-<h5>Header 5</h5>
+<h5 id="header-5">Header 5</h5>
 
-<h6>Header 6</h6>
+<h6 id="header-6">Header 6</h6>
 
-<h2>Links &amp; Images</h2>
+<h2 id="links-images">Links &amp; Images</h2>
 
 <p><a href='https://quarto.org' title=''>https://quarto.org</a></p>
 
@@ -39,7 +39,7 @@
         </ac:caption>
     </ac:image>
 
-<h2>Lists</h2>
+<h2 id="lists">Lists</h2>
 
 <ul>
 <li>unordered list
@@ -92,7 +92,7 @@ continues after
 <dd>definition</dd>
 </dl>
 
-<h2>Tables</h2>
+<h2 id="tables">Tables</h2>
 
 <table>
 <tr class="header">
@@ -121,16 +121,37 @@ continues after
 </tr>
 </table>
 
-<h2>Source Code</h2>
+<h2 id="source-code">Source Code</h2>
 
-<!-- ```
-code
-```
+    <ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <!\[CDATA\[code\]\]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+  
 
-```python
-1 + 1
-```
+    <ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">python</ac:parameter>
+        <ac:plain-text-body>
+          <!\[CDATA\[1 + 1\]\]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+  
 
-```default
-code
-``` -->
+    <ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">default</ac:parameter>
+        <ac:plain-text-body>
+          <!\[CDATA\[code\]\]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+  
