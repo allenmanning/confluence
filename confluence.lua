@@ -141,6 +141,16 @@ function HorizontalRule()
   return "<hr/>"
 end
 
+--function CodeBlock(s, attr)
+--  TODO add Confluence CodeBlock
+--  TODO group Confluence Overrides together
+--  <ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+  --    <ac:plain-text-body>
+  --        <![CDATA[code]]>
+  --    </ac:plain-text-body>
+  --</ac:structured-macro>
+--end
+
 function Span(s, attr)
   return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
 end
@@ -161,6 +171,20 @@ end
 function Image(s, src, tit, attr)
   return "<img src='" .. escape(src,true) .. "' title='" ..
           escape(tit,true) .. "'/>"
+end
+
+-- Convert pandoc alignment to something HTML can use.
+-- align is AlignLeft, AlignRight, AlignCenter, or AlignDefault.
+local function html_align(align)
+  if align == 'AlignLeft' then
+    return 'left'
+  elseif align == 'AlignRight' then
+    return 'right'
+  elseif align == 'AlignCenter' then
+    return 'center'
+  else
+    return 'left'
+  end
 end
 
 function CaptionedImage(source, title, caption, attributes)
@@ -230,6 +254,52 @@ function RawBlock(format, str)
   else
     return ''
   end
+end
+
+-- Caption is a string, aligns is an array of strings,
+-- widths is an array of floats, headers is an array of
+-- strings, rows is an array of arrays of strings.
+function Table(caption, aligns, widths, headers, rows)
+  local buffer = {}
+  local function add(s)
+    table.insert(buffer, s)
+  end
+  add("<table>")
+  if caption ~= "" then
+    add("<caption>" .. caption .. "</caption>")
+  end
+  if widths and widths[1] ~= 0 then
+    for _, w in pairs(widths) do
+      add('<col width="' .. string.format("%.0f%%", w * 100) .. '" />')
+    end
+  end
+  local header_row = {}
+  local empty_header = true
+  for i, h in pairs(headers) do
+    local align = html_align(aligns[i])
+    table.insert(header_row,'<th align="' .. align .. '">' .. h .. '</th>')
+    empty_header = empty_header and h == ""
+  end
+  if empty_header then
+    head = ""
+  else
+    add('<tr class="header">')
+    for _,h in pairs(header_row) do
+      add(h)
+    end
+    add('</tr>')
+  end
+  local class = "even"
+  for _, row in pairs(rows) do
+    class = (class == "even" and "odd") or "even"
+    add('<tr class="' .. class .. '">')
+    for i,c in pairs(row) do
+      add('<td align="' .. html_align(aligns[i]) .. '">' .. c .. '</td>')
+    end
+    add('</tr>')
+  end
+  add('</table>')
+  return table.concat(buffer,'\n')
 end
 
 -- The following code will produce runtime warnings when you haven't defined
