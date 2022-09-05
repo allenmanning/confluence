@@ -1,0 +1,136 @@
+<h2>Text Formatting</h2>
+
+<p><em>italics</em> and <strong>bold</strong></p>
+
+<p>superscript<sup>2</sup> / subscript<sub>2</sub></p>
+
+<p><del>strikethrough</del></p>
+
+<p><code>verbatim code</code></p>
+
+<h2>Headings</h2>
+
+<h1>Header 1</h1>
+
+<h2>Header 2</h2>
+
+<h3>Header 3</h3>
+
+<h4>Header 4</h4>
+
+<h5>Header 5</h5>
+
+<h6>Header 6</h6>
+
+<h2>Links &amp; Images</h2>
+
+<p><a href='https://quarto.org' title=''>https://quarto.org</a></p>
+
+<p><a href='https://quarto.org' title=''>Quarto</a></p>
+
+<ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt="fig:"
+    ac:src="https://tinyurl.com/2hy53zek">
+        <ri:url ri:value="https://tinyurl.com/2hy53zek" />
+        <ac:caption>
+            <p>Caption</p>
+        </ac:caption>
+    </ac:image>
+
+<h2>Lists</h2>
+
+<ul>
+<li>unordered list
+
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2
+
+<ul>
+<li>sub-sub-item 1</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li><p>item 2</p>
+
+<p>Continued (indent 4 spaces)</p></li>
+</ul>
+
+<hr/>
+
+<ol>
+<li>ordered list</li>
+<li>item 2
+
+<ol>
+<li>sub-item 1
+
+<ol>
+<li>sub-sub-item 1</li>
+</ol></li>
+</ol></li>
+</ol>
+
+<!-- 
+TODO Not yet supported
+(@)  A list whose numbering
+
+continues after
+
+(@)  an interruption -->
+
+<hr/>
+
+<dl>
+<dt>term</dt>
+<dd>definition</dd>
+</dl>
+
+<h2>Tables</h2>
+
+<table>
+<tr class="header">
+<th align="right">Right</th>
+<th align="left">Left</th>
+<th align="left">Default</th>
+<th align="center">Center</th>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="left">12</td>
+<td align="left">12</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="right">123</td>
+<td align="left">123</td>
+<td align="left">123</td>
+<td align="center">123</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="center">1</td>
+</tr>
+</table>
+
+<h2>Source Code</h2>
+
+<!-- ```
+code
+```
+
+```python
+1 + 1
+```
+
+```default
+code
+``` -->
