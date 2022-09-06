@@ -8,24 +8,36 @@ validate-yaml: false
 
 ## Text Formatting
 
-*italics* and **bold**
++-----------------------------------+-------------------------------+
+| Markdown Syntax                   | Output                        |
++===================================+===============================+
+|     *italics* and **bold**        | *italics* and **bold**        |
++-----------------------------------+-------------------------------+
+|     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++-----------------------------------+-------------------------------+
 
+## Headings {#headings}
 
-superscript^2^ / subscript~2~
++---------------------+-----------------------------------+
+| Markdown Syntax     | Output                            |
++=====================+===================================+
+|     # Header 1      | # Header 1 {.heading-output}      |
++---------------------+-----------------------------------+
+|     ## Header 2     | ## Header 2 {.heading-output}     |
++---------------------+-----------------------------------+
+|     ### Header 3    | ### Header 3 {.heading-output}    |
++---------------------+-----------------------------------+
+|     #### Header 4   | #### Header 4 {.heading-output}   |
++---------------------+-----------------------------------+
+|     ##### Header 5  | ##### Header 5 {.heading-output}  |
++---------------------+-----------------------------------+
+|     ###### Header 6 | ###### Header 6 {.heading-output} |
++---------------------+-----------------------------------+
 
-
-~~strikethrough~~
-
-
-`verbatim code`
-
-## Headings
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
 
 ## Links & Images
 <https://quarto.org>
@@ -34,54 +46,104 @@ superscript^2^ / subscript~2~
 
 ![Caption](https://tinyurl.com/2hy53zek)
 
+
 ## Lists
-* unordered list
-    + sub-item 1
-    + sub-item 2
-        - sub-sub-item 1
 
----
++-------------------------------------+---------------------------------+
+| Markdown Syntax                     | Output                          |
++=====================================+=================================+
+|     * unordered list                | -   unordered list              |
+|         + sub-item 1                |                                 |
+|         + sub-item 2                |     -   sub-item 1              |
+|             - sub-sub-item 1        |                                 |
+|                                     |     -   sub-item 2              |
+|                                     |                                 |
+|                                     |         -   sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     *   item 2                      | -   item 2                      |
+|                                     |                                 |
+|         Continued (indent 4 spaces) |     Continued (indent 4 spaces) |
++-------------------------------------+---------------------------------+
+|     1. ordered list                 | 1.  ordered list                |
+|     2. item 2                       |                                 |
+|         i) sub-item 1               | 2.  item 2                      |
+|              A.  sub-sub-item 1     |                                 |
+|                                     |     i)  sub-item 1              |
+|                                     |                                 |
+|                                     |         A.  sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     (@)  A list whose numbering     | (1) A list whose numbering      |
+|                                     |                                 |
+|     continues after                 | continues after                 |
+|                                     |                                 |
+|     (@)  an interruption            | (2) an interruption             |
++-------------------------------------+---------------------------------+
+|     term                            | term                            |
+|     : definition                    |                                 |
+|                                     | :   definition                  |
++-------------------------------------+---------------------------------+
 
-*   item 2
-
-    Continued (indent 4 spaces)
-
----
-
-1. ordered list
-2. item 2
-    i) sub-item 1
-         A.  sub-sub-item 1
-
-<!-- 
-TODO Not yet supported
-(@)  A list whose numbering
-
-continues after
-
-(@)  an interruption -->
-
----
-
-term
-: definition
 
 ## Tables
+
+#### Markdown Syntax
+
+    | Right | Left | Default | Center |
+    |------:|:-----|---------|:------:|
+    |   12  |  12  |    12   |    12  |
+    |  123  |  123 |   123   |   123  |
+    |    1  |    1 |     1   |     1  |
+
+#### Output
+
 | Right | Left | Default | Center |
 |------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
+|    12 | 12   | 12      |   12   |
+|   123 | 123  | 123     |  123   |
+|     1 | 1    | 1       |   1    |
+
 
 ## Source Code
+
+Use ```` ``` ```` to delimit blocks of source code:
+
+```` markdown
 ```
 code
 ```
+````
+
+```
+code
+```
+
+Add a language to syntax highlight code blocks:
+
+```` markdown
+```python
+1 + 1
+```
+````
 
 ```python
 1 + 1
 ```
 
+
+Pandoc supports syntax highlighting for over 140 different languages. If your language is not supported then you can use the `default` langauge to get a similar visual treatment:
+
+```` markdown
 ```default
 code
 ```
+````
+
+```default
+code
+```
+
+
+## Equations
+
+No support, yet, as it requires [plugins from the marketplace](https://allenmanning.atlassian.net/wiki/marketplace/discover/search?query=math).
+
