@@ -1,26 +1,148 @@
 <h2 id="text-formatting">Text Formatting</h2>
 
-<p><em>italics</em> and <strong>bold</strong></p>
-
-<p>superscript<sup>2</sup> / subscript<sub>2</sub></p>
-
-<p><del>strikethrough</del></p>
-
-<p><code>verbatim code</code></p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="44%" />
+</colgroup>
+<tr class="header">
+<th align="left">Markdown Syntax</th>
+<th align="left">Output</th>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[*italics* and **bold**]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><em>italics</em> and <strong>bold</strong></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[superscript^2^ / subscript~2~]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left">superscript<sup>2</sup> / subscript<sub>2</sub></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[~~strikethrough~~]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><del>strikethrough</del></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[`verbatim code`]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><code>verbatim code</code></td>
+</tr>
+</table>
 
 <h2 id="headings">Headings</h2>
 
-<h1 id="header-1">Header 1</h1>
-
-<h2 id="header-2">Header 2</h2>
-
-<h3 id="header-3">Header 3</h3>
-
-<h4 id="header-4">Header 4</h4>
-
-<h5 id="header-5">Header 5</h5>
-
-<h6 id="header-6">Header 6</h6>
+<table>
+<colgroup>
+<col width="31%" />
+<col width="50%" />
+</colgroup>
+<tr class="header">
+<th align="left">Markdown Syntax</th>
+<th align="left">Output</th>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[# Header 1]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h1 id="header-1" class="heading-output">Header 1</h1></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[## Header 2]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h2 id="header-2" class="heading-output">Header 2</h2></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[### Header 3]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h3 id="header-3" class="heading-output">Header 3</h3></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[#### Header 4]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h4 id="header-4" class="heading-output">Header 4</h4></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[##### Header 5]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h5 id="header-5" class="heading-output">Header 5</h5></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[###### Header 6]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h6 id="header-6" class="heading-output">Header 6</h6></td>
+</tr>
+</table>
 
 <h2 id="links-images">Links &amp; Images</h2>
 
@@ -41,58 +163,146 @@
 
 <h2 id="lists">Lists</h2>
 
-<ul>
-<li>unordered list
+<table>
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<tr class="header">
+<th align="left">Markdown Syntax</th>
+<th align="left">Output</th>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[* unordered list
+    + sub-item 1
+    + sub-item 2
+        - sub-sub-item 1]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><ul>
+<li><p>unordered list</p>
 
 <ul>
-<li>sub-item 1</li>
-<li>sub-item 2
+<li><p>sub-item 1</p></li>
+<li><p>sub-item 2</p>
 
 <ul>
 <li>sub-sub-item 1</li>
 </ul></li>
 </ul></li>
-</ul>
+</ul></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[*   item 2
 
-<hr/>
-
-<ul>
+    Continued (indent 4 spaces)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><ul>
 <li><p>item 2</p>
 
 <p>Continued (indent 4 spaces)</p></li>
-</ul>
-
-<hr/>
+</ul></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[1. ordered list
+2. item 2
+    i) sub-item 1
+         A.  sub-sub-item 1]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><ol>
+<li><p>ordered list</p></li>
+<li><p>item 2</p>
 
 <ol>
-<li>ordered list</li>
-<li>item 2
-
-<ol>
-<li>sub-item 1
+<li><p>sub-item 1</p>
 
 <ol>
 <li>sub-sub-item 1</li>
 </ol></li>
 </ol></li>
-</ol>
-
-<!-- 
-TODO Not yet supported
-(@)  A list whose numbering
+</ol></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[(@)  A list whose numbering
 
 continues after
 
-(@)  an interruption -->
+(@)  an interruption]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><ol>
+<li>A list whose numbering</li>
+</ol>
 
-<hr/>
+<p>continues after</p>
 
-<dl>
+<ol>
+<li>an interruption</li>
+</ol></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[term
+: definition]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><dl>
 <dt>term</dt>
-<dd>definition</dd>
-</dl>
+<dd><p>definition</p></dd>
+</dl></td>
+</tr>
+</table>
 
 <h2 id="tables">Tables</h2>
+
+<h4 id="markdown-syntax">Markdown Syntax</h4>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|   12  |  12  |    12   |    12  |
+|  123  |  123 |   123   |   123  |
+|    1  |    1 |     1   |     1  |]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<h4 id="output">Output</h4>
 
 <table>
 <tr class="header">
@@ -123,6 +333,20 @@ continues after
 
 <h2 id="source-code">Source Code</h2>
 
+<p>Use <code>```</code> to delimit blocks of source code:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```
+code
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
 <ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
@@ -130,6 +354,20 @@ continues after
         <ac:parameter ac:name="language"></ac:parameter>
         <ac:plain-text-body>
           <![CDATA[code]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>Add a language to syntax highlight code blocks:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```python
+1 + 1
+```]]>
         </ac:plain-text-body>
     </ac:structured-macro>
 
@@ -143,6 +381,20 @@ continues after
         </ac:plain-text-body>
     </ac:structured-macro>
 
+<p>Pandoc supports syntax highlighting for over 140 different languages. If your language is not supported then you can use the <code>default</code> langauge to get a similar visual treatment:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```default
+code
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
 <ac:structured-macro
       ac:name="code"
       ac:schema-version="1"
@@ -152,3 +404,7 @@ continues after
           <![CDATA[code]]>
         </ac:plain-text-body>
     </ac:structured-macro>
+
+<h2 id="equations">Equations</h2>
+
+<p>No support, yet, as it requires <a href='https://allenmanning.atlassian.net/wiki/marketplace/discover/search?query=math' title=''>plugins from the marketplace</a>.</p>

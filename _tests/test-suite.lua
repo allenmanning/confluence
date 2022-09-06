@@ -49,4 +49,80 @@ function TestCodeBlockConfluence:testWithAllAttributes()
   lu.assertEquals(actual, expected)
 end
 
+TestTableConfluence = {}
+function TestTableConfluence:testColGroup()
+  local expected = [[<table>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<tr class="odd">
+<td align="left">12</td>
+<td align="left">12</td>
+<td align="left">12</td>
+<td align="left">12</td>
+</tr>
+<tr class="even">
+<td align="left">123</td>
+<td align="left">123</td>
+<td align="left">123</td>
+<td align="left">123</td>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+</table>]]
+  local caption = ''
+  local aligns = {AlignRight, AlignLeft, AlignDefault, AlignCenter}
+  local widths = {0.1, 0.1, 0.1, 0.7}
+  local headers = {Right, Left, Default, Center}
+  local rows = {
+    {12, 12, 12, 12},
+    {123, 123, 123, 123},
+    {1, 1, 1, 1},
+  }
+  local actual = confluence.TableConfluence(caption, aligns, widths, headers, rows);
+
+  lu.assertEquals(actual, expected)
+end
+function TestTableConfluence:testNoColGroupNoWidth()
+  local expected = [[<table>
+<tr class="odd">
+<td align="left">12</td>
+<td align="left">12</td>
+<td align="left">12</td>
+<td align="left">12</td>
+</tr>
+<tr class="even">
+<td align="left">123</td>
+<td align="left">123</td>
+<td align="left">123</td>
+<td align="left">123</td>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+</table>]]
+  local caption = ''
+  local aligns = {AlignRight, AlignLeft, AlignDefault, AlignCenter}
+  local widths = {0.0, 0.0, 0.0, 0.0}
+  local headers = {Right, Left, Default, Center}
+  local rows = {
+    {12, 12, 12, 12},
+    {123, 123, 123, 123},
+    {1, 1, 1, 1},
+  }
+  local actual = confluence.TableConfluence(caption, aligns, widths, headers, rows);
+
+  lu.assertEquals(actual, expected)
+end
+
 os.exit(lu.LuaUnit.run())
