@@ -2,10 +2,8 @@
 -- https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html
 -- https://pandoc.org/MANUAL.html#custom-readers-and-writers
 
-local pipe = pandoc.pipe
 local stringify = (require "pandoc.utils").stringify
 local confluence = require('confluence-overrides')
-local html_align = confluence.html_align
 
 -- The global variable PANDOC_DOCUMENT contains the full AST of
 -- the document which is going to be written. It can be used to
