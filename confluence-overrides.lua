@@ -65,8 +65,7 @@ function CaptionedImageConfluence(source, title, caption)
     ac:layout="{layout}"
     ac:alt="{alt}"
     ac:src="{source}">
-        <ri:url ri:value="{source}" />
-        {caption}
+        <ri:attachment ri:filename="{source}" />{caption}
     </ac:image>]]
 
   local sourceValue = escape(source, true)

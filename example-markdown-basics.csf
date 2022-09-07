@@ -144,22 +144,112 @@
 </tr>
 </table>
 
-<h2 id="links-images">Links &amp; Images</h2>
-
-<p><a href='https://quarto.org' title=''>https://quarto.org</a></p>
-
-<p><a href='https://quarto.org' title=''>Quarto</a></p>
-
-<ac:image
+<table>
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<tr class="header">
+<th align="left">Markdown Syntax</th>
+<th align="left">Output</th>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[<https://quarto.org>]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><a href='https://quarto.org' title=''>https://quarto.org</a></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[[Quarto](https://quarto.org)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><a href='https://quarto.org' title=''>Quarto</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[![Caption](elephant.png)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><ac:image
     ac:align=""
     ac:layout=""
     ac:alt="fig:"
-    ac:src="https://tinyurl.com/2hy53zek">
-        <ri:url ri:value="https://tinyurl.com/2hy53zek" />
-        <ac:caption>
-            <p>Caption</p>
-        </ac:caption>
-    </ac:image>
+    ac:src="elephant.png">
+        <ri:attachment ri:filename="elephant.png" />
+    </ac:image></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[[![Caption](elephant.png)](https://quarto.org)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><a href='https:/quarto.org' title=''><ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt=""
+    ac:src="elephant.png">
+        <ri:attachment ri:filename="elephant.png" />
+    </ac:image></a></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[[![Caption](elephant.png)](https://quarto.org "An elephant")]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><a href='https://quarto.org' title=''><ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt="An elephant"
+    ac:src="elephant.png">
+        <ri:attachment ri:filename="elephant.png" />
+    </ac:image></a></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[[![](elephant.png){fig-alt="Alt text"}](https://quarto.org)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><a href='https://quarto.org' title=''><ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt=""
+    ac:src="elephant.png">
+        <ri:attachment ri:filename="elephant.png" />
+    </ac:image></a></td>
+</tr>
+</table>
 
 <h2 id="lists">Lists</h2>
 
