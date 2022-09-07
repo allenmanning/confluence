@@ -205,3 +205,29 @@ A bracketed sequence of inlines, as one would use to begin a link, will be treat
 ## Callout Blocks
 
 No support, yet, as it requires extension hooks to callouts in the Quarto CLI which don't yet exist.
+
+## Other Blocks
+
++-----------------------------+--------------------------+
+| Markdown Syntax             | Output                   |
++=============================+==========================+
+|     > Blockquote            | > Blockquote             |
++-----------------------------+--------------------------+
+|     ::: {.classname}        | Not Yet Supported        |
+|     Div                     |                          |
+|     :::                     |                          |
++-----------------------------+--------------------------+
+|     | Line Block            | Not Yet Supported        |
+|     |   Spaces and newlines |                          |
+|     |   are preserved       |                          |
++-----------------------------+--------------------------+
+
+### Special Characters
+
++-----------------+-------------+
+| Markdown Syntax | Output      |
++=================+=============+
+|     endash: --  | endash: --  |
++-----------------+-------------+
+|     emdash: --- | emdash: --- |
++-----------------+-------------+

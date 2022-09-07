@@ -558,3 +558,108 @@ Fences without attributes are always closing fences. Unlike with fenced code blo
 <h2 id="callout-blocks">Callout Blocks</h2>
 
 <p>No support, yet, as it requires extension hooks to callouts in the Quarto CLI which don’t yet exist.</p>
+
+<h2 id="other-blocks">Other Blocks</h2>
+
+<table>
+<colgroup>
+<col width="38%" />
+<col width="35%" />
+<col width="26%" />
+</colgroup>
+<tr class="odd">
+<td align="left"><h1 id="markdown-syntax-1">Markdown Syntax</h1>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[ > Blockquote]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><h1 id="output-1">Output</h1>
+
+<blockquote>
+<p>Blockquote</p>
+</blockquote></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[::: {.classname}
+Div
+:::]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><span style="color:orange">Not Supported</span> |
+|
+|</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[| Line Block
+|   Spaces and newlines
+|   are preserved]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left"><span style="color:orange">Not Supported</span>
+|
+|</td>
+<td align="left"></td>
+</tr>
+</table>
+
+<h3 id="special-characters">Special Characters</h3>
+
+<table>
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+</colgroup>
+<tr class="header">
+<th align="left">Markdown Syntax</th>
+<th align="left">Output</th>
+</tr>
+<tr class="odd">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[endash: --]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left">endash: –</td>
+</tr>
+<tr class="even">
+<td align="left"><ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language"></ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[emdash: ---]]>
+        </ac:plain-text-body>
+    </ac:structured-macro></td>
+<td align="left">emdash: —</td>
+</tr>
+</table>
