@@ -8,6 +8,23 @@ function TestModules:testCaptionedImageExists()
   lu.assertNotIsNil(confluence.CaptionedImageConfluence)
 end
 
+TestImage = {}
+function TestImage:testWithAllAttributes()
+  local expected = [[<ac:image
+    ac:align=""
+    ac:layout=""
+    ac:alt="fake-title"
+    ac:src="fake-source">
+        <ri:attachment ri:filename="fake-source" />
+    </ac:image>]]
+  local source = 'fake-source'
+  local title = 'fake-title'
+  local caption = ''
+  local actual = confluence.CaptionedImageConfluence(source, title, caption)
+
+  lu.assertEquals(actual, expected)
+end
+
 TestCaptionedImage = {}
 function TestCaptionedImage:testWithAllAttributes()
   local expected = [[<ac:image
@@ -15,8 +32,7 @@ function TestCaptionedImage:testWithAllAttributes()
     ac:layout=""
     ac:alt="fake-title"
     ac:src="fake-source">
-        <ri:url ri:value="fake-source" />
-        <ac:caption>
+        <ri:attachment ri:filename="fake-source" /><ac:caption>
             <p>fake-caption</p>
         </ac:caption>
     </ac:image>]]

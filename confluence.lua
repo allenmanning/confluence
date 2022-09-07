@@ -119,8 +119,7 @@ function Link(s, tgt, tit, attr)
 end
 
 function Image(s, src, tit, attr)
-  return "<img src='" .. escape(src,true) .. "' title='" ..
-          escape(tit,true) .. "'/>"
+  return confluence.CaptionedImageConfluence(src, tit, '', attr)
 end
 
 function Code(s, attr)
