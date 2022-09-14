@@ -1,8 +1,5 @@
 ---
-title: Confluence Storage Format
-format: 
-  confluence.lua:
-    output-ext: csf
+title: Markdown Basics
 validate-yaml: false
 ---
 

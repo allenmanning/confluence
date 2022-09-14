@@ -1,0 +1,7 @@
+project:
+  title: "Confluence Site"
+  type: confluence
+  render:
+    - "*.qmd"
+
+
