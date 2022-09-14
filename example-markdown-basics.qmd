@@ -38,6 +38,7 @@ validate-yaml: false
 |     ###### Header 6 | ###### Header 6 {.heading-output} |
 +---------------------+-----------------------------------+
 
+## Links & Images
 
 +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 | Markdown Syntax                                                  | Output                                                                                                 |
@@ -73,19 +74,19 @@ validate-yaml: false
 |                                     |                                 |
 |         Continued (indent 4 spaces) |     Continued (indent 4 spaces) |
 +-------------------------------------+---------------------------------+
-|     1. ordered list                 | 1.  ordered list                |
+|     1. ordered list                 | NOT YET SUPPORTED               |
 |     2. item 2                       |                                 |
-|         i) sub-item 1               | 2.  item 2                      |
+|         i) sub-item 1               |                                 |
 |              A.  sub-sub-item 1     |                                 |
-|                                     |     i)  sub-item 1              |
 |                                     |                                 |
-|                                     |         A.  sub-sub-item 1      |
+|                                     |                                 |
+|                                     |                                 |
 +-------------------------------------+---------------------------------+
-|     (@)  A list whose numbering     | (1) A list whose numbering      |
+|     (@)  A list whose numbering     | NOT YET SUPPORTED               |
 |                                     |                                 |
-|     continues after                 | continues after                 |
+|     continues after                 |                                 |
 |                                     |                                 |
-|     (@)  an interruption            | (2) an interruption             |
+|     (@)  an interruption            |                                 |
 +-------------------------------------+---------------------------------+
 |     term                            | term                            |
 |     : definition                    |                                 |

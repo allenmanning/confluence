@@ -144,6 +144,8 @@
 </tr>
 </table>
 
+<h2 id="links-images">Links &amp; Images</h2>
+
 <table>
 <colgroup>
 <col width="39%" />
@@ -319,18 +321,7 @@
          A.  sub-sub-item 1]]>
         </ac:plain-text-body>
     </ac:structured-macro></td>
-<td align="left"><ol>
-<li><p>ordered list</p></li>
-<li><p>item 2</p>
-
-<ol>
-<li><p>sub-item 1</p>
-
-<ol>
-<li>sub-sub-item 1</li>
-</ol></li>
-</ol></li>
-</ol></td>
+<td align="left">NOT YET SUPPORTED</td>
 </tr>
 <tr class="even">
 <td align="left"><ac:structured-macro
@@ -346,15 +337,7 @@ continues after
 (@)  an interruption]]>
         </ac:plain-text-body>
     </ac:structured-macro></td>
-<td align="left"><ol>
-<li>A list whose numbering</li>
-</ol>
-
-<p>continues after</p>
-
-<ol>
-<li>an interruption</li>
-</ol></td>
+<td align="left">NOT YET SUPPORTED</td>
 </tr>
 <tr class="odd">
 <td align="left"><ac:structured-macro
