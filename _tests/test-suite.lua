@@ -66,6 +66,27 @@ function TestCodeBlockConfluence:testWithAllAttributes()
 end
 
 TestTableConfluence = {}
+function TestTableConfluence:testAlign()
+  local expected = [[<table>
+<colgroup>
+<col width="10%" />
+</colgroup>
+<tr class="odd">
+<td align="right"><p style="text-align: right;">12</p></td>
+</tr>
+</table>]]
+  local caption = ''
+  local aligns = {'AlignRight'}
+  local widths = {0.1}
+  local headers = {Right}
+  local rows = {
+    {12}
+  }
+
+  local actual = confluence.TableConfluence(caption, aligns, widths, headers, rows);
+
+  lu.assertEquals(actual, expected)
+end
 function TestTableConfluence:testColGroup()
   local expected = [[<table>
 <colgroup>
@@ -75,26 +96,26 @@ function TestTableConfluence:testColGroup()
 <col width="70%" />
 </colgroup>
 <tr class="odd">
-<td align="left">12</td>
-<td align="left">12</td>
-<td align="left">12</td>
-<td align="left">12</td>
+<td align="right"><p style="text-align: right;">12</p></td>
+<td align="left"><p style="text-align: left;">12</p></td>
+<td align="left"><p style="text-align: left;">12</p></td>
+<td align="center"><p style="text-align: center;">12</p></td>
 </tr>
 <tr class="even">
-<td align="left">123</td>
-<td align="left">123</td>
-<td align="left">123</td>
-<td align="left">123</td>
+<td align="right"><p style="text-align: right;">123</p></td>
+<td align="left"><p style="text-align: left;">123</p></td>
+<td align="left"><p style="text-align: left;">123</p></td>
+<td align="center"><p style="text-align: center;">123</p></td>
 </tr>
 <tr class="odd">
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<td align="right"><p style="text-align: right;">1</p></td>
+<td align="left"><p style="text-align: left;">1</p></td>
+<td align="left"><p style="text-align: left;">1</p></td>
+<td align="center"><p style="text-align: center;">1</p></td>
 </tr>
 </table>]]
   local caption = ''
-  local aligns = {AlignRight, AlignLeft, AlignDefault, AlignCenter}
+  local aligns = {'AlignRight', 'AlignLeft', 'AlignDefault', 'AlignCenter'}
   local widths = {0.1, 0.1, 0.1, 0.7}
   local headers = {Right, Left, Default, Center}
   local rows = {
@@ -109,26 +130,26 @@ end
 function TestTableConfluence:testNoColGroupNoWidth()
   local expected = [[<table>
 <tr class="odd">
-<td align="left">12</td>
-<td align="left">12</td>
-<td align="left">12</td>
-<td align="left">12</td>
+<td align="right"><p style="text-align: right;">12</p></td>
+<td align="left"><p style="text-align: left;">12</p></td>
+<td align="left"><p style="text-align: left;">12</p></td>
+<td align="center"><p style="text-align: center;">12</p></td>
 </tr>
 <tr class="even">
-<td align="left">123</td>
-<td align="left">123</td>
-<td align="left">123</td>
-<td align="left">123</td>
+<td align="right"><p style="text-align: right;">123</p></td>
+<td align="left"><p style="text-align: left;">123</p></td>
+<td align="left"><p style="text-align: left;">123</p></td>
+<td align="center"><p style="text-align: center;">123</p></td>
 </tr>
 <tr class="odd">
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<td align="right"><p style="text-align: right;">1</p></td>
+<td align="left"><p style="text-align: left;">1</p></td>
+<td align="left"><p style="text-align: left;">1</p></td>
+<td align="center"><p style="text-align: center;">1</p></td>
 </tr>
 </table>]]
   local caption = ''
-  local aligns = {AlignRight, AlignLeft, AlignDefault, AlignCenter}
+  local aligns = {'AlignRight', 'AlignLeft', 'AlignDefault', 'AlignCenter'}
   local widths = {0.0, 0.0, 0.0, 0.0}
   local headers = {Right, Left, Default, Center}
   local rows = {
@@ -140,5 +161,4 @@ function TestTableConfluence:testNoColGroupNoWidth()
 
   lu.assertEquals(actual, expected)
 end
-
 os.exit(lu.LuaUnit.run())
