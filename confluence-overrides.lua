@@ -160,7 +160,15 @@ function TableConfluence(caption, aligns, widths, headers, rows)
     class = (class == "even" and "odd") or "even"
     add('<tr class="' .. class .. '">')
     for i,c in pairs(row) do
-      add('<td align="' .. html_align(aligns[i]) .. '">' .. c .. '</td>')
+      add('<td align="' ..
+              html_align(aligns[i]) ..
+              '">' ..
+              '<p style="text-align: ' ..
+              html_align(aligns[i]) ..
+              ';">' ..
+              c ..
+              '</p>' ..
+              '</td>')
     end
     add('</tr>')
   end
