@@ -13,3 +13,12 @@ In Pandoc markdown, a figure is created whenever a captioned image appears by-it
 ```
 
 ![Elephant](elephant.png)
+
+### Linked Figures
+
+When rendering with Quarto, you can enclose a figure within a link and it will still be treated within output as a captioned figure. For example:
+
+``` markdown
+[![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
+```
+[![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
