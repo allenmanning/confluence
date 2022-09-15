@@ -55,7 +55,7 @@ local interpolate = function(str, vars)
           end))
 end
 
-function CaptionedImageConfluence(source, title, caption)
+function CaptionedImageConfluence(source, title, caption, attr)
   local CAPTION_SNIPPET = [[<ac:caption>
             <p>{caption}</p>
         </ac:caption>]]
@@ -71,16 +71,25 @@ function CaptionedImageConfluence(source, title, caption)
   local sourceValue = escape(source, true)
   local titleValue = escape(title, true)
   local captionValue = escape(caption)
+
+  local alignValue = 'center'
+  if (attr and attr['fig-align']) then
+    alignValue = escape(attr['fig-align'], 'center')
+  end
+
+  local layoutValue = 'center'
+  if alignValue == 'right' then layoutValue = 'align-end' end
+  if alignValue == 'left' then layoutValue = 'align-start' end
+
   if not isEmpty(captionValue) then
     captionValue =
     interpolate {CAPTION_SNIPPET, caption = captionValue}
   end
-  print('captioned Image:')
   return interpolate {
     IMAGE_SNIPPET,
     source = sourceValue,
-    align = 'center',
-    layout = 'center',
+    align = alignValue,
+    layout = layoutValue,
     alt = titleValue,
     caption = captionValue}
 end
