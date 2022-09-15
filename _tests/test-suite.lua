@@ -11,8 +11,8 @@ end
 TestImage = {}
 function TestImage:testWithAllAttributes()
   local expected = [[<ac:image
-    ac:align=""
-    ac:layout=""
+    ac:align="center"
+    ac:layout="center"
     ac:alt="fake-title"
     ac:src="fake-source">
         <ri:attachment ri:filename="fake-source" />
@@ -28,8 +28,8 @@ end
 TestCaptionedImage = {}
 function TestCaptionedImage:testWithAllAttributes()
   local expected = [[<ac:image
-    ac:align=""
-    ac:layout=""
+    ac:align="center"
+    ac:layout="center"
     ac:alt="fake-title"
     ac:src="fake-source">
         <ri:attachment ri:filename="fake-source" /><ac:caption>

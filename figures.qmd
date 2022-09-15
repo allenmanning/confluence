@@ -14,7 +14,9 @@ In Pandoc markdown, a figure is created whenever a captioned image appears by-it
 
 ![Elephant](elephant.png)
 
-### Linked Figures
+[//]: # TODO Center Align()
+
+<!-- ### Linked Figures
 
 When rendering with Quarto, you can enclose a figure within a link and it will still be treated within output as a captioned figure. For example:
 
@@ -22,3 +24,15 @@ When rendering with Quarto, you can enclose a figure within a link and it will s
 [![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
 ```
 [![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
+
+### Figure Alignment
+
+Figures are center aligned by default. Add the `fig-align` attribute to the image to use a different alignment. For example:
+
+``` markdown
+![Elephant](elephant.png){fig-align="left"}
+```
+
+![Elephant](elephant.png){fig-align="left"}
+
+Note that figure captions are left aligned to accommodate longer caption text (which looks odd when center aligned). -->

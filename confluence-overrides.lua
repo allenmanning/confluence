@@ -75,12 +75,12 @@ function CaptionedImageConfluence(source, title, caption)
     captionValue =
     interpolate {CAPTION_SNIPPET, caption = captionValue}
   end
-
+  print('captioned Image:')
   return interpolate {
     IMAGE_SNIPPET,
     source = sourceValue,
-    align = '',
-    layout = '',
+    align = 'center',
+    layout = 'center',
     alt = titleValue,
     caption = captionValue}
 end
