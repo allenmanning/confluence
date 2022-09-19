@@ -21,9 +21,10 @@ When rendering with Quarto, you can enclose a figure within a link and it will s
 ``` markdown
 [![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
 ```
+
 [![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)
 
-[Bug #14](https://github.com/allenmanning/confluence/issues/14)
+[Bug #14 Linked Captioned Images not using `CaptionedImage`](https://github.com/allenmanning/confluence/issues/14){style="color:red"}
 
 ### Figure Alignment
 
@@ -31,8 +32,11 @@ Figures are center aligned by default. Add the `fig-align` attribute to the imag
 
 ``` markdown
 ![Elephant](elephant.png){fig-align="right"}
+![Elephant](elephant.png){fig-align="left"}
 ```
-
+<!-- TODO Better Preview for figure alignment -->
 ![Elephant](elephant.png){fig-align="right"}
+// NOTE:  Must have carrige return or else this will be emitted as an Image and not a Captioned Image
+![Elephant](elephant.png){fig-align="left"}
 
 Note that figure captions are left aligned to accommodate longer caption text (which looks odd when center aligned).

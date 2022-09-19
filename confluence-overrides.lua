@@ -21,12 +21,12 @@ local function escape(s, in_attribute)
 end
 
 -- From https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
-function dump(o)
+function dumpObject(o)
   if type(o) == 'table' then
     local s = '{ '
     for k,v in pairs(o) do
       if type(k) ~= 'number' then k = '"'..k..'"' end
-      s = s .. '['..k..'] = ' .. dump(v) .. ','
+      s = s .. '['..k..'] = ' .. dumpObject(v) .. ','
     end
     return s .. '} '
   else
@@ -34,8 +34,8 @@ function dump(o)
   end
 end
 
-function printDump(label, o)
-  print(label .. ': ', dump(o))
+function dump(object, label)
+  print(label or '' .. ': ', dumpObject(object))
 end
 
 local function isEmpty(s)
