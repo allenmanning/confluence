@@ -99,7 +99,9 @@ Famous Elephants
 ```
 
 Again, the last paragraph provides the main caption, and the individual figures carry the sub-captions. Here is what this looks like when rendered as CSF:
+
 <!-- TODO Preview subfigures in a table -->
+
 ::: {#fig-elephants layout-ncol=2}
 
 ![Surus](surus.png){#fig-surus}
@@ -112,3 +114,40 @@ Famous Elephants
 Note that the empty lines between the figures (and between the last figure and the caption) are required (it's what indicates that these images belong to their own paragraphs rather than being multiple images within the same paragraph).
 
 Note also that we also used a `layout-ncol` attribute to specify a two-column layout. The next section delves more into customizing figure layouts.
+
+## Figure Panels
+
+Above we demonstrate laying out two side-by-side figures with subcaptions and a main caption. You may or may not want the caption / sub-caption treatment, and you might also want to use multiple rows of figures. All of these variations are possible.
+
+To layout two figures with their own standalone captions (and no main caption), just eliminate the `#fig` identifiers and main caption at the bottom:
+
+``` markdown
+::: {layout-ncol=2}
+![Surus](surus.png)
+
+![Hanno](hanno.png)
+:::
+```
+
+::: {layout-ncol=2}
+![Surus](surus.png)
+
+![Hanno](hanno.png)
+:::
+
+
+You can also eliminate the captions entirely:
+
+``` markdown
+::: {layout-ncol=2}
+![](surus.png)
+
+![](hanno.png)
+:::
+```
+
+::: {layout-ncol=2}
+![](surus.png)
+
+![](hanno.png)
+:::
