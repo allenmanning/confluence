@@ -56,6 +56,9 @@ local interpolate = function(str, vars)
 end
 
 function CaptionedImageConfluence(source, title, caption, attr)
+  --Note Title isn't usable by confluence at this time it will
+  -- serve as the default value for attr.alt-text
+
   local CAPTION_SNIPPET = [[<ac:caption>
             <p>{caption}</p>
         </ac:caption>]]
@@ -77,6 +80,11 @@ function CaptionedImageConfluence(source, title, caption, attr)
     alignValue = escape(attr['fig-align'], 'center')
   end
 
+  local altValue = titleValue;
+  if (attr and attr['fig-alt']) then
+    altValue = escape(attr['fig-alt'], '')
+  end
+
   local layoutValue = 'center'
   if alignValue == 'right' then layoutValue = 'align-end' end
   if alignValue == 'left' then layoutValue = 'align-start' end
@@ -90,7 +98,7 @@ function CaptionedImageConfluence(source, title, caption, attr)
     source = sourceValue,
     align = alignValue,
     layout = layoutValue,
-    alt = titleValue,
+    alt = altValue,
     caption = captionValue}
 end
 

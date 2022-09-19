@@ -36,7 +36,45 @@ Figures are center aligned by default. Add the `fig-align` attribute to the imag
 ```
 <!-- TODO Better Preview for figure alignment -->
 ![Elephant](elephant.png){fig-align="right"}
-// NOTE:  Must have carrige return or else this will be emitted as an Image and not a Captioned Image
+<!-- // NOTE:  Must have carrige return or else this will be emitted as an Image and not a Captioned Image -->
 ![Elephant](elephant.png){fig-align="left"}
 
 Note that figure captions are left aligned to accommodate longer caption text (which looks odd when center aligned).
+
+### Alt Text
+
+You can add alternative text to a figure by adding the `fig-alt` attribute to the image. For example, the following Markdown...
+
+``` markdown
+![](elephant.png){fig-alt="A drawing of an elephant."}
+```
+
+... will create the following CSF with the corresponding alt tag:
+
+``` html
+<ac:image ... ac:alt="example alt text">
+    ...
+</ac:image>
+```
+
+Note that the figure caption, and alt text can all be different. Also, confluence doesn't yet offer a way to set the title for an image.  For example, the following code...
+
+``` markdown
+![Elephant](elephant.png "Title: An elephant"){fig-alt="A drawing of an elephant."}
+```
+
+<!-- TODO Preview - remove title as it makes it seem like confluence supports it -->
+
+![Elephant](elephant.png "Title: An elephant"){fig-alt="A drawing of an elephant."}
+
+
+...produces this CSF:
+
+``` html
+<ac:image ... ac:alt="A drawing of an elephant.">
+    <ri:attachment ri:filename="elephant.png" />
+    <ac:caption>
+        <p>Elephant</p>
+    </ac:caption>
+</ac:image>
+```
