@@ -180,3 +180,27 @@ If you have more than 2 images, you might want to lay them out across multiple r
 :::
 
 More complex figure arrangements (e.g. rows with varying column layouts) are possible. See the [Custom Layouts](#complex-layouts) section below for more details.
+
+
+## Figure Divs
+
+You can treat any markdown content you want as a figure by enclosing it in Pandoc div block with an identifier prefaced with `#fig-`. For example, here we create a figure that includes an icon character:
+
+``` markdown
+::: {#fig-elephant}
+
+🐘
+
+Elephant
+:::
+```
+
+::: {#fig-elephant}
+
+🐘
+
+Elephant
+:::
+
+Note that the last paragraph in the div block is used as the figure caption.
+
