@@ -151,3 +151,32 @@ You can also eliminate the captions entirely:
 
 ![](hanno.png)
 :::
+
+<!-- TODO Better Preview for figure alignment -->
+### Multiple Rows
+
+If you have more than 2 images, you might want to lay them out across multiple rows. You can do this using the `layout-nrow` attribute. For example:
+
+``` markdown
+::: {layout-nrow=2}
+![Surus](surus.png)
+
+![Hanno](hanno.png)
+
+![Abdul Abbas](abdul-abbas.png)
+
+![Lin Wang](lin-wang.png)
+:::
+```
+
+::: {layout-nrow=2}
+![Surus](surus.png)
+
+![Hanno](hanno.png)
+
+![Abdul Abbas](abdul-abbas.png)
+
+![Lin Wang](lin-wang.png)
+:::
+
+More complex figure arrangements (e.g. rows with varying column layouts) are possible. See the [Custom Layouts](#complex-layouts) section below for more details.
