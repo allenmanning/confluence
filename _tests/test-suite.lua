@@ -8,28 +8,11 @@ function TestModules:testCaptionedImageExists()
   lu.assertNotIsNil(confluence.CaptionedImageConfluence)
 end
 
-TestImage = {}
-function TestImage:testWithAllAttributes()
-  local expected = [[<ac:image
-    ac:align=""
-    ac:layout=""
-    ac:alt="fake-title"
-    ac:src="fake-source">
-        <ri:attachment ri:filename="fake-source" />
-    </ac:image>]]
-  local source = 'fake-source'
-  local title = 'fake-title'
-  local caption = ''
-  local actual = confluence.CaptionedImageConfluence(source, title, caption)
-
-  lu.assertEquals(actual, expected)
-end
-
 TestCaptionedImage = {}
-function TestCaptionedImage:testWithAllAttributes()
+function TestCaptionedImage:testBasic()
   local expected = [[<ac:image
-    ac:align=""
-    ac:layout=""
+    ac:align="center"
+    ac:layout="center"
     ac:alt="fake-title"
     ac:src="fake-source">
         <ri:attachment ri:filename="fake-source" /><ac:caption>
@@ -40,6 +23,60 @@ function TestCaptionedImage:testWithAllAttributes()
   local title = 'fake-title'
   local caption = 'fake-caption'
   local actual = confluence.CaptionedImageConfluence(source, title, caption)
+
+  lu.assertEquals(actual, expected)
+end
+function TestCaptionedImage:testFigAltText()
+  local expected = [[<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fake-alt"
+    ac:src="fake-source">
+        <ri:attachment ri:filename="fake-source" /><ac:caption>
+            <p>fake-caption</p>
+        </ac:caption>
+    </ac:image>]]
+  local source = 'fake-source'
+  local title = 'fake-title'
+  local caption = 'fake-caption'
+  local attr = {id = '', class = '', ['fig-alt'] = 'fake-alt'}
+  local actual = confluence.CaptionedImageConfluence(source, title, caption, attr)
+
+  lu.assertEquals(actual, expected)
+end
+function TestCaptionedImage:testAlignLeft()
+  local expected = [[<ac:image
+    ac:align="left"
+    ac:layout="align-start"
+    ac:alt="fake-title"
+    ac:src="fake-source">
+        <ri:attachment ri:filename="fake-source" /><ac:caption>
+            <p>fake-caption</p>
+        </ac:caption>
+    </ac:image>]]
+  local source = 'fake-source'
+  local title = 'fake-title'
+  local caption = 'fake-caption'
+  local attr = {id = '', class = '', ['fig-align'] = 'left'}
+  local actual = confluence.CaptionedImageConfluence(source, title, caption, attr)
+
+  lu.assertEquals(actual, expected)
+end
+function TestCaptionedImage:testAlignRight()
+  local expected = [[<ac:image
+    ac:align="right"
+    ac:layout="align-end"
+    ac:alt="fake-title"
+    ac:src="fake-source">
+        <ri:attachment ri:filename="fake-source" /><ac:caption>
+            <p>fake-caption</p>
+        </ac:caption>
+    </ac:image>]]
+  local source = 'fake-source'
+  local title = 'fake-title'
+  local caption = 'fake-caption'
+  local attr = {id = '', class = '', ['fig-align'] = 'right'}
+  local actual = confluence.CaptionedImageConfluence(source, title, caption, attr)
 
   lu.assertEquals(actual, expected)
 end

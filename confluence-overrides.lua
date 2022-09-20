@@ -21,12 +21,12 @@ local function escape(s, in_attribute)
 end
 
 -- From https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
-function dump(o)
+function dumpObject(o)
   if type(o) == 'table' then
     local s = '{ '
     for k,v in pairs(o) do
       if type(k) ~= 'number' then k = '"'..k..'"' end
-      s = s .. '['..k..'] = ' .. dump(v) .. ','
+      s = s .. '['..k..'] = ' .. dumpObject(v) .. ','
     end
     return s .. '} '
   else
@@ -34,8 +34,8 @@ function dump(o)
   end
 end
 
-function printDump(label, o)
-  print(label .. ': ', dump(o))
+function dump(object, label)
+  print(label or '' .. ': ', dumpObject(object))
 end
 
 local function isEmpty(s)
@@ -55,7 +55,10 @@ local interpolate = function(str, vars)
           end))
 end
 
-function CaptionedImageConfluence(source, title, caption)
+function CaptionedImageConfluence(source, title, caption, attr)
+  --Note Title isn't usable by confluence at this time it will
+  -- serve as the default value for attr.alt-text
+
   local CAPTION_SNIPPET = [[<ac:caption>
             <p>{caption}</p>
         </ac:caption>]]
@@ -71,17 +74,31 @@ function CaptionedImageConfluence(source, title, caption)
   local sourceValue = escape(source, true)
   local titleValue = escape(title, true)
   local captionValue = escape(caption)
+
+  local alignValue = 'center'
+  if (attr and attr['fig-align']) then
+    alignValue = escape(attr['fig-align'], 'center')
+  end
+
+  local altValue = titleValue;
+  if (attr and attr['fig-alt']) then
+    altValue = escape(attr['fig-alt'], '')
+  end
+
+  local layoutValue = 'center'
+  if alignValue == 'right' then layoutValue = 'align-end' end
+  if alignValue == 'left' then layoutValue = 'align-start' end
+
   if not isEmpty(captionValue) then
     captionValue =
     interpolate {CAPTION_SNIPPET, caption = captionValue}
   end
-
   return interpolate {
     IMAGE_SNIPPET,
     source = sourceValue,
-    align = '',
-    layout = '',
-    alt = titleValue,
+    align = alignValue,
+    layout = layoutValue,
+    alt = altValue,
     caption = captionValue}
 end
 

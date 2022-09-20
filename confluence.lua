@@ -5,6 +5,24 @@
 local stringify = (require "pandoc.utils").stringify
 local confluence = require('confluence-overrides')
 
+-- From https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
+function dumpObject(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k,v in pairs(o) do
+      if type(k) ~= 'number' then k = '"'..k..'"' end
+      s = s .. '['..k..'] = ' .. dumpObject(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
+function dump(object, label)
+  print(label or '' .. ': ', dumpObject(object))
+end
+
 -- The global variable PANDOC_DOCUMENT contains the full AST of
 -- the document which is going to be written. It can be used to
 -- configure the writer.
