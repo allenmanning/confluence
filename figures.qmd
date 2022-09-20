@@ -204,3 +204,91 @@ Elephant
 
 Note that the last paragraph in the div block is used as the figure caption.
 
+## LaTeX Figures
+No Support
+
+## Caption Locations
+No Support
+
+## Custom Layouts {#complex-layouts}
+[Not Yet Supported]{style="color:orange"}
+
+## Computations
+[Not Yet Supported]{style="color:orange"}
+
+## Block Layout
+
+While the examples above illustrate laying out figures, it's important to note that layout attributes can be used to layout any sort of block content. For example, here we layout 2 lists side-by-side:
+
+``` markdown
+::: {layout-ncol=2}
+### List One
+
+- Item A
+- Item B
+- Item C
+
+### List Two
+
+- Item X
+- Item Y
+- Item Z
+:::
+```
+
+::: {layout-ncol=2}
+### List One
+
+- Item A
+- Item B
+- Item C
+
+### List Two
+
+- Item X
+- Item Y
+- Item Z
+:::
+
+
+Note that headings are automatically combined with the block that follows them, so this markdown has a total of 2 columns to lay out. Here's an example of a paragraph next to a bullet list (without headings):
+
+``` markdown
+::: {layout-ncol=2}
+- Item X
+- Item Y
+- Item Z
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+:::
+```
+
+::: {layout-ncol=2}
+- Item X
+- Item Y
+- Item Z
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+:::
+
+``` markdown
+::: {layout-ncol=3}
+- Item X
+- Item Y
+- Item Z
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+:::
+```
+
+::: {layout-ncol=3}
+- Item X
+- Item Y
+- Item Z
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. 
+:::
