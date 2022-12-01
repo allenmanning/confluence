@@ -1,0 +1,63 @@
+---
+title: "Using Python"
+jupyter-language: "Python"
+---
+
+## Overview
+
+Quarto supports executable Python code blocks within markdown. This allows you to create fully reproducible documents and reports---the Python code required to produce your output is part of the document itself, and is automatically re-run whenever the document is rendered.
+
+If you have Python and the `jupyter` package installed then you have all you need to render documents that contain embedded Python code (if you don't, we'll cover this in the [installation](#installation) section below). Next, we'll cover the basics of creating and rendering documents with Python code blocks.
+
+### Code Blocks
+
+Code blocks that use braces around the language name (e.g. ```` ```{python} ````) are executable, and will be run by Quarto during render. Here is a simple example:
+
+```` markdown
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{{python}}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+````
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```

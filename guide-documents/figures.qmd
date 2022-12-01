@@ -214,7 +214,19 @@ No Support
 [Not Yet Supported]{style="color:orange"}
 
 ## Computations
-[Not Yet Supported]{style="color:orange"}
+#### Knitr
+`` {r}
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Speed and Stopping Distances of Cars"
+#|   - "Vapor Pressure of Mercury as a Function of Temperature"
+
+plot(cars)
+plot(pressure)
+``
+
+Note that in these examples we also use the `fig-cap` option to apply a caption to each of the generated figures.
+
 
 ## Block Layout
 

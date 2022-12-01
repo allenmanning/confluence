@@ -422,7 +422,19 @@ Elephant
 
 <h2 id="computations">Computations</h2>
 
-<p><span style="color:orange">Not Yet Supported</span></p>
+<h4 id="knitr">Knitr</h4>
+
+<p>`` {r}
+#| layout-ncol: 2
+#| fig-cap:
+#| - &ldquo;Speed and Stopping Distances of Cars&rdquo;
+#| - &ldquo;Vapor Pressure of Mercury as a Function of Temperature&rdquo;</p>
+
+<p>plot(cars)
+plot(pressure)
+``</p>
+
+<p>Note that in these examples we also use the <code>fig-cap</code> option to apply a caption to each of the generated figures.</p>
 
 <h2 id="block-layout">Block Layout</h2>
 
