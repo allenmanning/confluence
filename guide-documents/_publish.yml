@@ -1,0 +1,12 @@
+- source: markdown-basics.qmd
+  confluence:
+    - id: '21921793'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/21921793'
+- source: figures.qmd
+  confluence:
+    - id: '25624645'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/25624645'
+- source: computations-python.qmd
+  confluence:
+    - id: '25755664'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/25755664'

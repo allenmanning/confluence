@@ -1,0 +1,247 @@
+[
+  {
+    "objectID": "figures.html",
+    "href": "figures.html",
+    "title": "Confluence Site",
+    "section": "",
+    "text": "Quarto includes a number of features aimed at making it easier to work with figures and subfigures, as well as for laying out panels that contain multiple figures, tables, or other content."
+  },
+  {
+    "objectID": "figures.html#figure-basics",
+    "href": "figures.html#figure-basics",
+    "title": "Confluence Site",
+    "section": "Figure Basics",
+    "text": "Figure Basics\nIn Pandoc markdown, a figure is created whenever a captioned image appears by-itself in a paragraph. For example:\n![Elephant](elephant.png)\n\n\n\nElephant\n\n\n\nLinked Figures\nWhen rendering with Quarto, you can enclose a figure within a link and it will still be treated within output as a captioned figure. For example:\n[![Elephant](elephant.png)](https://en.wikipedia.org/wiki/Elephant)\n\n\n\nElephant\n\n\nBug #14 Linked Captioned Images not using CaptionedImage\n\n\nFigure Alignment\nFigures are center aligned by default. Add the fig-align attribute to the image to use a different alignment. For example:\n![Elephant](elephant.png){fig-align=\"right\"}\n![Elephant](elephant.png){fig-align=\"left\"}\n\n  \nNote that figure captions are left aligned to accommodate longer caption text (which looks odd when center aligned).\n\n\nAlt Text\nYou can add alternative text to a figure by adding the fig-alt attribute to the image. For example, the following Markdown…\n![](elephant.png){fig-alt=\"A drawing of an elephant.\"}\n… will create the following CSF with the corresponding alt tag:\n<ac:image ... ac:alt=\"example alt text\">\n    ...\n</ac:image>\nNote that the figure caption, and alt text can all be different. Also, confluence doesn’t yet offer a way to set the title for an image. For example, the following code…\n![Elephant](elephant.png \"Title: An elephant\"){fig-alt=\"A drawing of an elephant.\"}\n\n\n\n\n\n\nElephant\n\n\n…produces this CSF:\n<ac:image ... ac:alt=\"A drawing of an elephant.\">\n    <ri:attachment ri:filename=\"elephant.png\" />\n    <ac:caption>\n        <p>Elephant</p>\n    </ac:caption>\n</ac:image>\n\n\nMultiformat Figures\nBug #15 Multi-format Figures don’t auto-append png extension."
+  },
+  {
+    "objectID": "figures.html#subfigures",
+    "href": "figures.html#subfigures",
+    "title": "Confluence Site",
+    "section": "Subfigures",
+    "text": "Subfigures\nIf you have several figures that appear as a group, you can create a figure div to enclose them. For example:\n::: {#fig-elephants layout-ncol=2}\n\n![Surus](surus.png){#fig-surus}\n\n![Hanno](hanno.png){#fig-hanno}\n\nFamous Elephants\n:::\nAgain, the last paragraph provides the main caption, and the individual figures carry the sub-captions. Here is what this looks like when rendered as CSF:\n\n\n\n\n\n\n\n\n\n(a) Surus\n\n\n\n\n\n\n\n(b) Hanno\n\n\n\n\nFigure 1: Famous Elephants\n\n\nNote that the empty lines between the figures (and between the last figure and the caption) are required (it’s what indicates that these images belong to their own paragraphs rather than being multiple images within the same paragraph).\nNote also that we also used a layout-ncol attribute to specify a two-column layout. The next section delves more into customizing figure layouts."
+  },
+  {
+    "objectID": "figures.html#figure-panels",
+    "href": "figures.html#figure-panels",
+    "title": "Confluence Site",
+    "section": "Figure Panels",
+    "text": "Figure Panels\nAbove we demonstrate laying out two side-by-side figures with subcaptions and a main caption. You may or may not want the caption / sub-caption treatment, and you might also want to use multiple rows of figures. All of these variations are possible.\nTo layout two figures with their own standalone captions (and no main caption), just eliminate the #fig identifiers and main caption at the bottom:\n::: {layout-ncol=2}\n![Surus](surus.png)\n\n![Hanno](hanno.png)\n:::\n\n\n\n\n\n\nSurus\n\n\n\n\n\n\n\nHanno\n\n\n\n\n\nYou can also eliminate the captions entirely:\n::: {layout-ncol=2}\n![](surus.png)\n\n![](hanno.png)\n:::\n\n\n\n\n\n\n\n\n\n\n\n\nMultiple Rows\nIf you have more than 2 images, you might want to lay them out across multiple rows. You can do this using the layout-nrow attribute. For example:\n::: {layout-nrow=2}\n![Surus](surus.png)\n\n![Hanno](hanno.png)\n\n![Abdul Abbas](abdul-abbas.png)\n\n![Lin Wang](lin-wang.png)\n:::\n\n\n\n\n\n\nSurus\n\n\n\n\n\n\n\nHanno\n\n\n\n\n\n\n\n\n\nAbdul Abbas\n\n\n\n\n\n\n\nLin Wang\n\n\n\n\n\nMore complex figure arrangements (e.g. rows with varying column layouts) are possible. See the Custom Layouts section below for more details."
+  },
+  {
+    "objectID": "figures.html#figure-divs",
+    "href": "figures.html#figure-divs",
+    "title": "Confluence Site",
+    "section": "Figure Divs",
+    "text": "Figure Divs\nYou can treat any markdown content you want as a figure by enclosing it in Pandoc div block with an identifier prefaced with #fig-. For example, here we create a figure that includes an icon character:\n::: {#fig-elephant}\n\n🐘\n\nElephant\n:::\n\n\n🐘\nFigure 2: Elephant\n\n\nNote that the last paragraph in the div block is used as the figure caption."
+  },
+  {
+    "objectID": "figures.html#latex-figures",
+    "href": "figures.html#latex-figures",
+    "title": "Confluence Site",
+    "section": "LaTeX Figures",
+    "text": "LaTeX Figures\nNo Support"
+  },
+  {
+    "objectID": "figures.html#caption-locations",
+    "href": "figures.html#caption-locations",
+    "title": "Confluence Site",
+    "section": "Caption Locations",
+    "text": "Caption Locations\nNo Support"
+  },
+  {
+    "objectID": "figures.html#complex-layouts",
+    "href": "figures.html#complex-layouts",
+    "title": "Confluence Site",
+    "section": "Custom Layouts",
+    "text": "Custom Layouts\nNot Yet Supported"
+  },
+  {
+    "objectID": "figures.html#computations",
+    "href": "figures.html#computations",
+    "title": "Confluence Site",
+    "section": "Computations",
+    "text": "Computations\nNot Yet Supported"
+  },
+  {
+    "objectID": "figures.html#block-layout",
+    "href": "figures.html#block-layout",
+    "title": "Confluence Site",
+    "section": "Block Layout",
+    "text": "Block Layout\nWhile the examples above illustrate laying out figures, it’s important to note that layout attributes can be used to layout any sort of block content. For example, here we layout 2 lists side-by-side:\n::: {layout-ncol=2}\n### List One\n\n- Item A\n- Item B\n- Item C\n\n### List Two\n\n- Item X\n- Item Y\n- Item Z\n:::\n\n\n\nList One\n\nItem A\nItem B\nItem C\n\n\n\nList Two\n\nItem X\nItem Y\nItem Z\n\n\n\n\nNote that headings are automatically combined with the block that follows them, so this markdown has a total of 2 columns to lay out. Here’s an example of a paragraph next to a bullet list (without headings):\n::: {layout-ncol=2}\n- Item X\n- Item Y\n- Item Z\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. \n:::\n\n\n\n\nItem X\nItem Y\nItem Z\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa.\n\n\n\n::: {layout-ncol=3}\n- Item X\n- Item Y\n- Item Z\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa. \n:::\n\n\n\n\nItem X\nItem Y\nItem Z\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa.\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa."
+  },
+  {
+    "objectID": "markdown-basics.html",
+    "href": "markdown-basics.html",
+    "title": "Confluence Site",
+    "section": "",
+    "text": "Markdown Syntax\nOutput\n\n\n\n\n*italics* and **bold**\nitalics and bold\n\n\nsuperscript^2^ / subscript~2~\nsuperscript2 / subscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
+  },
+  {
+    "objectID": "markdown-basics.html#headings",
+    "href": "markdown-basics.html#headings",
+    "title": "Confluence Site",
+    "section": "Headings",
+    "text": "Headings\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n# Header 1\nHeader 1\n\n\n## Header 2\nHeader 2\n\n\n### Header 3\nHeader 3\n\n\n#### Header 4\nHeader 4\n\n\n##### Header 5\nHeader 5\n\n\n###### Header 6\nHeader 6"
+  },
+  {
+    "objectID": "markdown-basics.html#links-images",
+    "href": "markdown-basics.html#links-images",
+    "title": "Confluence Site",
+    "section": "Links & Images",
+    "text": "Links & Images\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n<https://quarto.org>\nhttps://quarto.org\n\n\n[Quarto](https://quarto.org)\nQuarto\n\n\n![Caption](elephant.png)\n\n\n\n[![Caption](elephant.png)](https://quarto.org)\n\n\n\n[![Caption](elephant.png)](https://quarto.org \"An elephant\")\n\n\n\n[![](elephant.png){fig-alt=\"Alt text\"}](https://quarto.org)"
+  },
+  {
+    "objectID": "markdown-basics.html#lists",
+    "href": "markdown-basics.html#lists",
+    "title": "Confluence Site",
+    "section": "Lists",
+    "text": "Lists\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n* unordered list\n    + sub-item 1\n    + sub-item 2\n        - sub-sub-item 1\n\nunordered list\n\nsub-item 1\nsub-item 2\n\nsub-sub-item 1\n\n\n\n\n\n*   item 2\n\n    Continued (indent 4 spaces)\n\nitem 2\nContinued (indent 4 spaces)\n\n\n\n1. ordered list\n2. item 2\n    i) sub-item 1\n         A.  sub-sub-item 1\nNOT YET SUPPORTED\n\n\n(@)  A list whose numbering\n\ncontinues after\n\n(@)  an interruption\nNOT YET SUPPORTED\n\n\nterm\n: definition\n\nterm\n\ndefinition"
+  },
+  {
+    "objectID": "markdown-basics.html#tables",
+    "href": "markdown-basics.html#tables",
+    "title": "Confluence Site",
+    "section": "Tables",
+    "text": "Tables\n\nMarkdown Syntax\n| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|   12  |  12  |    12   |    12  |\n|  123  |  123 |   123   |   123  |\n|    1  |    1 |     1   |     1  |\n\n\nOutput\n\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1"
+  },
+  {
+    "objectID": "markdown-basics.html#source-code",
+    "href": "markdown-basics.html#source-code",
+    "title": "Confluence Site",
+    "section": "Source Code",
+    "text": "Source Code\nUse ``` to delimit blocks of source code:\n```\ncode\n```\ncode\nAdd a language to syntax highlight code blocks:\n```python\n1 + 1\n```\n1 + 1\nPandoc supports syntax highlighting for over 140 different languages. If your language is not supported then you can use the default langauge to get a similar visual treatment:\n```default\ncode\n```\ncode"
+  },
+  {
+    "objectID": "markdown-basics.html#equations",
+    "href": "markdown-basics.html#equations",
+    "title": "Confluence Site",
+    "section": "Equations",
+    "text": "Equations\nNo support, yet, as it requires plugins from the marketplace."
+  },
+  {
+    "objectID": "markdown-basics.html#diagrams",
+    "href": "markdown-basics.html#diagrams",
+    "title": "Confluence Site",
+    "section": "Diagrams",
+    "text": "Diagrams\nNo support, yet, as it requires plugins from the marketplace."
+  },
+  {
+    "objectID": "markdown-basics.html#divs-and-spans",
+    "href": "markdown-basics.html#divs-and-spans",
+    "title": "Confluence Site",
+    "section": "Divs and Spans",
+    "text": "Divs and Spans\n\nDivs\nNo support, yet, as Confluence filters out custom divs.\n\n\n\nSpans\nA bracketed sequence of inlines, as one would use to begin a link, will be treated as a Span with attributes if it is followed immediately by attributes:\n[This is *some orange text*]{style=\"color:orange\"}\nThis is some orange text"
+  },
+  {
+    "objectID": "markdown-basics.html#callout-blocks",
+    "href": "markdown-basics.html#callout-blocks",
+    "title": "Confluence Site",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\nNo support, yet, as it requires extension hooks to callouts in the Quarto CLI which don’t yet exist."
+  },
+  {
+    "objectID": "markdown-basics.html#other-blocks",
+    "href": "markdown-basics.html#other-blocks",
+    "title": "Confluence Site",
+    "section": "Other Blocks",
+    "text": "Other Blocks\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n> Blockquote\n\nBlockquote\n\n\n\n::: {.classname}\nDiv\n:::\nNot Yet Supported\n\n\n| Line Block\n|   Spaces and newlines\n|   are preserved\nNot Yet Supported\n\n\n\n\nSpecial Characters\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\nendash: --\nendash: –\n\n\nemdash: ---\nemdash: —"
+  },
+  {
+    "objectID": "tables-original.html",
+    "href": "tables-original.html",
+    "title": "Confluence Site",
+    "section": "",
+    "text": "Quarto includes a number of features aimed at making it easy to to author and customize markdown table output, including:\n\nSpecifying column alignment and widths.\nProviding captions, subcaptions, and cross-references.\nGenerating tables dynamically from executable code cells.\n\nThis article covers using these features in-depth."
+  },
+  {
+    "objectID": "tables-original.html#markdown-tables",
+    "href": "tables-original.html#markdown-tables",
+    "title": "Confluence Site",
+    "section": "Markdown Tables",
+    "text": "Markdown Tables\nThe most commonly used markdown table is known as a pipe table. Pipe tables support specifying per column alignment as well as captions. For example:\n| Default | Left | Right | Center |\n|---------|:-----|------:|:------:|\n| 12      | 12   |    12 |   12   |\n| 123     | 123  |   123 |  123   |\n| 1       | 1    |     1 |   1    |\n\n: Demonstration of pipe table sytnax\nHere is the table rendered to HTML:\n\nDemonstration of pipe table syntax\n\n\nDefault\nLeft\nRight\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\nThe beginning and ending pipe characters are optional, but pipes are required between all columns. The colons indicate column alignment as shown. The header cannot be omitted, however you can simulate a headerless table by including a header with blank cells.\nSince the pipes indicate column boundaries, columns need not be vertically aligned, as they are in the above example. So, this is a perfectly legal (though ugly) pipe table:\nfruit| price\n-----|-----:\napple|2.05\npear|1.37\norange|3.09\nThe cells of pipe tables cannot contain block elements like paragraphs and lists, and cannot span multiple lines. If a pipe table contains a row whose markdown content is wider than the column width (see columns option), then the table will take up the full text width and the cell contents will wrap, with the relative cell widths determined by the number of dashes in the line separating the table header from the table body.\nFor example ---|- would make the first column 3/4 and the second column 1/4 of the full text width. On the other hand, if no lines are wider than column width, then cell contents will not be wrapped, and the cells will be sized to their contents.\n\nAuthoring\nFor simple tables with only a few cells it’s straightforward to create them directly in markdown. As tables get larger, it makes sense to use an authoring tool. Some table authoring tools to consider include:\n\n\n\n\n\n\n\nTablesGenerator\nOnline tool for generating markdown tables\n\n\nEmacs TableMode\nText based table creation and editing capabilities for Emacs.\n\n\nQuarto Visual Editor\nVisual editor for .qmd files with table editing support."
+  },
+  {
+    "objectID": "tables-original.html#column-widths",
+    "href": "tables-original.html#column-widths",
+    "title": "Confluence Site",
+    "section": "Column Widths",
+    "text": "Column Widths\nAbove we describe a means of specifying column widths using the relative number of dashes in each column header (e.g. ---|- to get a 75% / 25% split for a two-column table).\nYou can also explicitly specify columns widths using the tbl-colwidths attribute or document-level option. For an individual markdown table, add the attribute after the caption. For example:\n| fruit  | price  |\n|--------|--------|\n| apple  | 2.05   |\n| pear   | 1.37   |\n| orange | 3.09   |\n\n: Fruit prices {tbl-colwidths=\"[75,25]\"}\nIf your table doesn’t have a caption, then you can still specify only tbl-colwidths:\n: {tbl-colwidths=\"[75,25]\"}\nColumn widths can also be specified at the document level (e.g. to have uniform widths across a set of tables):\n---\ntitle: \"My Document\"\nformat: html\ntbl-colwidths: [75,25]\n---"
+  },
+  {
+    "objectID": "tables-original.html#cross-references",
+    "href": "tables-original.html#cross-references",
+    "title": "Confluence Site",
+    "section": "Cross References",
+    "text": "Cross References\nFor tables produced by executable code cells, include a label with a tbl- prefix to make them cross-referenceable. For example:\n\n```{python}\n#| label: tbl-planets\n#| tbl-cap: Planets\n\nfrom IPython.display import Markdown\nfrom tabulate import tabulate\ntable = [[\"Sun\",696000,1989100000],\n         [\"Earth\",6371,5973.6],\n         [\"Moon\",1737,73.5],\n         [\"Mars\",3390,641.85]]\nMarkdown(tabulate(\n  table, \n  headers=[\"Planet\",\"R (km)\", \"mass (x 10^29 kg)\"]\n))\n```\n\n\n\nTable 1: Planets\n\n\nPlanet\nR (km)\nmass (x 10^29 kg)\n\n\n\n\nSun\n696000\n1.9891e+09\n\n\nEarth\n6371\n5973.6\n\n\nMoon\n1737\n73.5\n\n\nMars\n3390\n641.85\n\n\n\n\n\n\n\n\n\n\n\n\nLabel Prefix\n\n\n\nIn order for a table to be cross-referenceable, its label must start with the tbl- prefix.\n\n\n_table-crossrefs.md"
+  },
+  {
+    "objectID": "tables-original.html#caption-location",
+    "href": "tables-original.html#caption-location",
+    "title": "Confluence Site",
+    "section": "Caption Location",
+    "text": "Caption Location\nBy default, table captions are positioned above tables. You can modify this behavior using the tbl-cap-location option. For example:\n---\ntbl-cap-location: top\n---\nNote that this option is specified at the top level so that it can be shared by both PDF and HTML formats. If you are only targeting a single format you can place it alongside other format specific options.\nValid values for the caption location include:\n\n\n\nValue\nDescription\n\n\n\n\ntop\nPosition the caption above the table.\n\n\nbottom\nPosition the caption below the table.\n\n\nmargin\nPosition the caption in the margin.\n\n\n\nSee the article on Article Layout for additional details on placing captions in the margin."
+  },
+  {
+    "objectID": "tables-original.html#computations",
+    "href": "tables-original.html#computations",
+    "title": "Confluence Site",
+    "section": "Computations",
+    "text": "Computations\nAll of the options described above work for tables produced by executable code cells. For example, here we use the Python tabulate package along with the Markdown() function from the IPython display module to print a markdown table:\n\n```{python}\n#| label: tbl-planet-measures\n#| tbl-cap: Planets\n\nfrom IPython.display import Markdown\nfrom tabulate import tabulate\ntable = [[\"Sun\",696000,1989100000],\n         [\"Earth\",6371,5973.6],\n         [\"Moon\",1737,73.5],\n         [\"Mars\",3390,641.85]]\nMarkdown(tabulate(\n  table, \n  headers=[\"Planet\",\"R (km)\", \"mass (x 10^29 kg)\"]\n))\n```\n\n\n\nTable 2: Planets\n\n\nPlanet\nR (km)\nmass (x 10^29 kg)\n\n\n\n\nSun\n696000\n1.9891e+09\n\n\nEarth\n6371\n5973.6\n\n\nMoon\n1737\n73.5\n\n\nMars\n3390\n641.85\n\n\n\n\n\n\nHere we apply the tbl-cap and tbl-colwidths options to a code cell that uses the knitr kable() function to write a markdown table:\n#| label: tbl-cars\n#| tbl-cap: \"Cars\"\n#| tbl-colwidths: [60,40]\n\nlibrary(knitr)\nkable(head(cars))\nIf your code cell produces multiple tables, you can also specify subcaptions and layout using cell options:\n#| label: tbl-example\n#| tbl-cap: \"Example\"\n#| tbl-subcap: \n#|   - \"Cars\"\n#|   - \"Pressure\"\n#| layout-ncol: 2\n#| echo: fenced\n\nlibrary(knitr)\nkable(head(cars))\nkable(head(pressure))"
+  },
+  {
+    "objectID": "tables-original.html#grid-tables",
+    "href": "tables-original.html#grid-tables",
+    "title": "Confluence Site",
+    "section": "Grid Tables",
+    "text": "Grid Tables\nGrid tables are a more advanced type of markdown tables that allow arbitrary block elements (multiple paragraphs, code blocks, lists, etc.). For example:\n+---------------+---------------+--------------------+\n| Fruit         | Price         | Advantages         |\n+===============+===============+====================+\n| Bananas       | $1.34         | - built-in wrapper |\n|               |               | - bright color     |\n+---------------+---------------+--------------------+\n| Oranges       | $2.10         | - cures scurvy     |\n|               |               | - tasty            |\n+---------------+---------------+--------------------+\n\n: Sample grid table.\nThe row of =s separates the header from the table body, and can be omitted for a headerless table. Cells that span multiple columns or rows are not supported.\nThis is what the table looks like when rendered to markdown:\n\nSample grid table.\n\n\n\n\n\n\n\nFruit\nPrice\nAdvantages\n\n\n\n\nBananas\n$1.34\n\nbuilt-in wrapper\nbright color\n\n\n\nOranges\n$2.10\n\ncures scurvy\ntasty\n\n\n\n\nAlignments can be specified as with pipe tables, by putting colons at the boundaries of the separator line after the header:\n+---------------+---------------+--------------------+\n| Right         | Left          | Centered           |\n+==============:+:==============+:==================:+\n| Bananas       | $1.34         | built-in wrapper   |\n+---------------+---------------+--------------------+\nFor headerless tables, the colons go on the top line instead:\n+--------------:+:--------------+:------------------:+\n| Right         | Left          | Centered           |\n+---------------+---------------+--------------------+\nNote that grid tables are quite awkward to write with a plain text editor (because unlike pipe tables, the column indicators must align). Here are some tools that can assist with creating grid tables:\n\nEmacs’ table-mode (M-x table-insert)\nQuarto Visual Editor"
+  },
+  {
+    "objectID": "tables.html",
+    "href": "tables.html",
+    "title": "Confluence Site",
+    "section": "",
+    "text": "Quarto includes a number of features aimed at making it easy to to author and customize markdown table output, including:\n\nSpecifying column alignment and widths.\nProviding captions, subcaptions, and cross-references.\nGenerating tables dynamically from executable code cells.\n\nThis article covers using these features in-depth."
+  },
+  {
+    "objectID": "tables.html#markdown-tables",
+    "href": "tables.html#markdown-tables",
+    "title": "Confluence Site",
+    "section": "Markdown Tables",
+    "text": "Markdown Tables\nThe most commonly used markdown table is known as a pipe table. Pipe tables support specifying per column alignment as well as captions. For example:\n| Default | Left | Right | Center |\n|---------|:-----|------:|:------:|\n| 12      | 12   |    12 |   12   |\n| 123     | 123  |   123 |  123   |\n| 1       | 1    |     1 |   1    |\n\n: Demonstration of pipe table sytnax\nHere is the table rendered to CSF:\n\nDemonstration of pipe table syntax\n\n\nDefault\nLeft\nRight\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\nThe beginning and ending pipe characters are optional, but pipes are required between all columns. The colons indicate column alignment as shown. The header cannot be omitted, however you can simulate a headerless table by including a header with blank cells.\nSince the pipes indicate column boundaries, columns need not be vertically aligned, as they are in the above example. So, this is a perfectly legal (though ugly) pipe table:\nfruit| price\n-----|-----:\napple|2.05\npear|1.37\norange|3.09\n\n\n\nfruit\nprice\n\n\n\n\napple\n2.05\n\n\npear\n1.37\n\n\norange\n3.09"
+  },
+  {
+    "objectID": "tables.html#column-widths",
+    "href": "tables.html#column-widths",
+    "title": "Confluence Site",
+    "section": "Column Widths",
+    "text": "Column Widths\nNot Yet Supported"
+  },
+  {
+    "objectID": "tables.html#cross-references",
+    "href": "tables.html#cross-references",
+    "title": "Confluence Site",
+    "section": "Cross References",
+    "text": "Cross References\nNot Yet Supported\n\n\n\n\n\n\nImportant\n\n\n\nExtended AST: Cross-Refs not available in Writer #8\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nExecutable Code Blocks don’t pass languageValue to Writer #19\n\n\n\n\n\n\n\n\nWarning\n\n\n\nPreview: No alternating colors for tables #7\n\n\n\n\n\n\n\n\nWarning\n\n\n\nCallout Support #18\n\n\n\n\n\n\n\n\nLabel Prefix\n\n\n\nIn order for a table to be cross-referenceable, its label must start with the tbl- prefix."
+  },
+  {
+    "objectID": "tables.html#caption-location",
+    "href": "tables.html#caption-location",
+    "title": "Confluence Site",
+    "section": "Caption Location",
+    "text": "Caption Location\nNot Yet Supported"
+  },
+  {
+    "objectID": "tables.html#cross-references-1",
+    "href": "tables.html#cross-references-1",
+    "title": "Confluence Site",
+    "section": "Cross References",
+    "text": "Cross References\nNot Yet Supported"
+  },
+  {
+    "objectID": "tables.html#computations",
+    "href": "tables.html#computations",
+    "title": "Confluence Site",
+    "section": "Computations",
+    "text": "Computations\nAll of the options described above work for tables produced by executable code cells. For example, here we use the Python tabulate package along with the Markdown() function from the IPython display module to print a markdown table:\n\n```{python}\n#| label: tbl-planet-measures\n#| tbl-cap: \"Planets\"\n\nfrom IPython.display import Markdown\nfrom tabulate import tabulate\ntable = [[\"Sun\",696000,1989100000],\n         [\"Earth\",6371,5973.6],\n         [\"Moon\",1737,73.5],\n         [\"Mars\",3390,641.85]]\nMarkdown(tabulate(\n  table, \n  headers=[\"Planet\",\"R (km)\", \"mass (x 10^29 kg)\"]\n))\n```\n\n\n\nTable 1: Planets\n\n\nPlanet\nR (km)\nmass (x 10^29 kg)\n\n\n\n\nSun\n696000\n1.9891e+09\n\n\nEarth\n6371\n5973.6\n\n\nMoon\n1737\n73.5\n\n\nMars\n3390\n641.85\n\n\n\n\n\n\nHere we apply the tbl-cap and tbl-colwidths options to a code cell that uses the knitr kable() function to write a markdown table:\nNot Yet Supported: tbl-colwidths \n\n```{r}\n#| label: tbl-cars\n#| tbl-cap: \"Cars\"\n#| tbl-colwidths: [60,40]\n\nlibrary(knitr)\nkable(head(cars))\n```\n\n\n\nTable 2: Cars\n\n\n\n\n\n\nspeed\ndist\n\n\n\n\n4\n2\n\n\n4\n10\n\n\n7\n4\n\n\n7\n22\n\n\n8\n16\n\n\n9\n10"
+  }
+]

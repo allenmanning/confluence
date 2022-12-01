@@ -1,0 +1,78 @@
+<h2 id="overview">Overview</h2>
+
+<p>Quarto supports executable Python code blocks within markdown. This allows you to create fully reproducible documents and reports—the Python code required to produce your output is part of the document itself, and is automatically re-run whenever the document is rendered.</p>
+
+<p>If you have Python and the <code>jupyter</code> package installed then you have all you need to render documents that contain embedded Python code (if you don’t, we’ll cover this in the <a href='#installation' title=''>installation</a> section below). Next, we’ll cover the basics of creating and rendering documents with Python code blocks.</p>
+
+<h3 id="code-blocks">Code Blocks</h3>
+
+<p>Code blocks that use braces around the language name (e.g. <code>```{python}</code>) are executable, and will be run by Quarto during render. Here is a simple example:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>For a demonstration of a line plot on a polar axis, see <a href='#fig-polar' title=''>Figure 1</a>.</p>
+
+<div class="cell" execution_count="1">
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">python cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div class="cell-output cell-output-display">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="computations-python_files/figure-publish/fig-polar-output-1.png" /><ac:caption>
+            <p>Figure 1: A line plot on a polar axis</p>
+        </ac:caption>
+    </ac:image></div></div>
