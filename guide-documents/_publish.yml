@@ -1,12 +1,16 @@
 - source: markdown-basics.qmd
   confluence:
-    - id: '21921793'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/21921793'
+    - id: '26116097'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26116097'
 - source: figures.qmd
   confluence:
-    - id: '25624645'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/25624645'
+    - id: '26181633'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26181633'
 - source: computations-python.qmd
   confluence:
-    - id: '25755664'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/25755664'
+    - id: '26247169'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26247169'
+- source: computations-r.qmd
+  confluence:
+    - id: '26116128'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26116128'
