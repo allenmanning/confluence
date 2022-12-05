@@ -1,16 +1,5 @@
 project:
-  type: website
-
-website:
-  title: "guide-site"
-  navbar:
-    left:
-      - markdown-basics.qmd
-      - figures.qmd
-      - computations-python.qmd
-      - computations-r.qmd
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+  title: "Confluence Site"
+  type: confluence
+execute:
+  freeze: true

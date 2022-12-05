@@ -2,15 +2,15 @@
   confluence:
     - id: '26116097'
       url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26116097'
-- source: figures.qmd
-  confluence:
-    - id: '26181633'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26181633'
 - source: computations-python.qmd
   confluence:
     - id: '26247169'
       url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26247169'
 - source: computations-r.qmd
   confluence:
-    - id: '26116128'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26116128'
+    - id: '26148897'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26148897'
+- source: figures.qmd
+  confluence:
+    - id: '26738773'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/26738773'

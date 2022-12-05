@@ -1,0 +1,16 @@
+{
+  "hash": "222011440ee1ba81d60cbfc382153322",
+  "result": {
+    "markdown": "---\ntitle: \"Using R\"\n---\n\n\n## Overview\n\nQuarto is a multi-language, next generation version of R Markdown from RStudio, with many new features and capabilities. Like R Markdown, Quarto uses [Knitr](https://yihui.org/knitr/) to execute R code, and is therefore able to render most existing Rmd files without modification.\n\nWe'll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on [Chunk Options](#chunk-options) and [Output Formats](#output-formats) below.\n\n### Code Blocks\n\nCode blocks that use braces around the language name (e.g. ```` ```{r} ````) are executable, and will be run by Quarto during render. Here is a simple example:\n\n```` markdown\n---\ntitle: \"ggplot2 demo\"\nauthor: \"Norah Jones\"\ndate: \"5/22/2021\"\nformat: \n  html:\n    code-fold: true\n---\n\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{{r}}\n#| label: fig-airquality\n#| fig-cap: Temperature and ozone level.\n#| warning: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```\n````\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point()\n```\n\n::: {.cell-output-display}\n![Temperature and ozone levelz.](computations-r_files/figure-html/fig-airquality-1.png){#fig-airquality width=672}\n:::\n:::",
+    "supporting": [
+      "computations-r_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

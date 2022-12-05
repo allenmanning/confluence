@@ -55,8 +55,7 @@ ggplot(airquality, aes(Temp, Ozone)) +
           <![CDATA[library(ggplot2)
 
 ggplot(airquality, aes(Temp, Ozone)) + 
-  geom_point() + 
-  geom_smooth(method = "loess")]]>
+  geom_point()]]>
         </ac:plain-text-body>
     </ac:structured-macro>
 
@@ -66,6 +65,6 @@ ggplot(airquality, aes(Temp, Ozone)) +
     ac:layout="center"
     ac:alt="fig:">
         <ri:attachment ri:filename="computations-r_files/figure-publish/fig-airquality-1.png" /><ac:caption>
-            <p>Figure 1: Temperature and ozone level.</p>
+            <p>Figure 1: Temperature and ozone levelz.</p>
         </ac:caption>
     </ac:image></div></div>
