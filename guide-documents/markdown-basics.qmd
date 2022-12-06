@@ -2,6 +2,7 @@
 title: Markdown Basics
 validate-yaml: false
 ---
+
 ## Text Formatting
 
 +-----------------------------------+-------------------------------+
@@ -52,7 +53,6 @@ validate-yaml: false
 |     [![](elephant.png){fig-alt="Alt text"}](https://quarto.org)  | [![](elephant.png){fig-alt="A line drawing of an elephant."}](https://quarto.org)                      |
 +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
-
 ## Lists
 
 +-------------------------------------+---------------------------------+
@@ -74,9 +74,6 @@ validate-yaml: false
 |     2. item 2                       |                                 |
 |         i) sub-item 1               |                                 |
 |              A.  sub-sub-item 1     |                                 |
-|                                     |                                 |
-|                                     |                                 |
-|                                     |                                 |
 +-------------------------------------+---------------------------------+
 |     (@)  A list whose numbering     | NOT YET SUPPORTED               |
 |                                     |                                 |
@@ -88,7 +85,6 @@ validate-yaml: false
 |     : definition                    |                                 |
 |                                     | :   definition                  |
 +-------------------------------------+---------------------------------+
-
 
 ## Tables
 
@@ -108,7 +104,6 @@ validate-yaml: false
 |   123 | 123  | 123     |  123   |
 |     1 | 1    | 1       |   1    |
 
-
 ## Source Code
 
 Use ```` ``` ```` to delimit blocks of source code:
@@ -119,9 +114,7 @@ code
 ```
 ````
 
-```
-code
-```
+    code
 
 Add a language to syntax highlight code blocks:
 
@@ -131,10 +124,9 @@ Add a language to syntax highlight code blocks:
 ```
 ````
 
-```python
+``` python
 1 + 1
 ```
-
 
 Pandoc supports syntax highlighting for over 140 different languages. If your language is not supported then you can use the `default` langauge to get a similar visual treatment:
 
@@ -144,10 +136,9 @@ code
 ```
 ````
 
-```default
+``` default
 code
 ```
-
 
 ## Equations
 
@@ -158,9 +149,12 @@ No support, yet, as it requires [plugins from the marketplace](https://marketpla
 No support, yet, as it requires [plugins from the marketplace](https://marketplace.atlassian.com/search?query=mermaid).
 
 ## Divs and Spans
+
 ### Divs
+
 No support, yet, as Confluence filters out custom divs.
 
+````{=html}
 <!-- You can add classes, attributes, and other identifiers to regions of content using Divs and Spans (you'll see an example of this below in [Callout Blocks]).
 
 For example, here we add the "border" class to a region of content using a div (`:::`):
@@ -190,12 +184,13 @@ More content.
 
 Fences without attributes are always closing fences. Unlike with fenced code blocks, the number of colons in the closing fence need not match the number in the opening fence. However, it can be helpful for visual clarity to use fences of different lengths to distinguish nested divs from their parents.
  -->
+````
 
 ### Spans
+
 A bracketed sequence of inlines, as one would use to begin a link, will be treated as a `Span` with attributes if it is followed immediately by attributes:
 
     [This is *some orange text*]{style="color:orange"}
-
 
 [This is *some orange text*]{style="color:orange"}
 
@@ -205,26 +200,26 @@ No support, yet, as it requires extension hooks to callouts in the Quarto CLI wh
 
 ## Other Blocks
 
-+-----------------------------+--------------------------+
-| Markdown Syntax             | Output                   |
-+=============================+==========================+
-|     > Blockquote            | > Blockquote             |
-+-----------------------------+--------------------------+
-|     ::: {.classname}        | Not Yet Supported        |
-|     Div                     |                          |
-|     :::                     |                          |
-+-----------------------------+--------------------------+
-|     | Line Block            | Not Yet Supported        |
-|     |   Spaces and newlines |                          |
-|     |   are preserved       |                          |
-+-----------------------------+--------------------------+
++-----------------------------+-------------------------+
+| Markdown Syntax             | Output                  |
++=============================+=========================+
+|     > Blockquote            | > Blockquote            |
++-----------------------------+-------------------------+
+|     ::: {.classname}        | Not Yet Supported       |
+|     Div                     |                         |
+|     :::                     |                         |
++-----------------------------+-------------------------+
+|     | Line Block            | Not Yet Supported       |
+|     |   Spaces and newlines |                         |
+|     |   are preserved       |                         |
++-----------------------------+-------------------------+
 
 ### Special Characters
 
-+-----------------+-------------+
-| Markdown Syntax | Output      |
-+=================+=============+
-|     endash: --  | endash: --  |
-+-----------------+-------------+
-|     emdash: --- | emdash: --- |
-+-----------------+-------------+
++-----------------+--------------+
+| Markdown Syntax | Output       |
++=================+==============+
+|     endash: --  | endash: --   |
++-----------------+--------------+
+|     emdash: --- | emdash: ---  |
++-----------------+--------------+

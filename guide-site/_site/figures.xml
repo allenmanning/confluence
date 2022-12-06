@@ -380,7 +380,7 @@ Famous Elephants
 </tr>
 </table></div>
 
-<p>More complex figure arrangements (e.g. rows with varying column layouts) are possible. See the <a href='#complex-layouts' title=''>Custom Layouts</a> section below for more details.</p>
+<p>More complex figure arrangements (e.g. rows with varying column layouts) are possible. See the <ac:link><ri:attachment ri:filename="Custom Layouts"/><ac:plain-text-link-body><![CDATA[#complex-layouts]]></ac:plain-text-link-body></ac:link> section below for more details.</p>
 
 <h2 id="figure-divs">Figure Divs</h2>
 

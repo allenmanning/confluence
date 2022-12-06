@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "computations-python.html",
+    "href": "computations-python.html",
+    "title": "Using Python",
+    "section": "",
+    "text": "Quarto supports executable Python code blocks within markdown. This allows you to create fully reproducible documents and reports—the Python code required to produce your output is part of the document itself, and is automatically re-run whenever the document is rendered.\nIf you have Python and the jupyter package installed then you have all you need to render documents that contain embedded Python code (if you don’t, we’ll cover this in the installation section below). Next, we’ll cover the basics of creating and rendering documents with Python code blocks.\n\n\nCode blocks that use braces around the language name (e.g. ```{python}) are executable, and will be run by Quarto during render. Here is a simple example:\n---\nformat:\n  html:\n    code-fold: true\njupyter: python3\n---\n\nFor a demonstration of a line plot on a polar axis, see @fig-polar.\n\n```{python}\n#| label: fig-polar\n#| fig-cap: \"A line plot on a polar axis\"\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\nFor a demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "computations-r.html",
+    "href": "computations-r.html",
+    "title": "Using R",
+    "section": "",
+    "text": "Quarto is a multi-language, next generation version of R Markdown from RStudio, with many new features and capabilities. Like R Markdown, Quarto uses Knitr to execute R code, and is therefore able to render most existing Rmd files without modification.\nWe’ll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on Chunk Options and Output Formats below.\n\n\nCode blocks that use braces around the language name (e.g. ```{r}) are executable, and will be run by Quarto during render. Here is a simple example:\n---\ntitle: \"ggplot2 demo\"\nauthor: \"Norah Jones\"\ndate: \"5/22/2021\"\nformat: \n  html:\n    code-fold: true\n---\n\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: Temperature and ozone level.\n#| warning: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```"
+  },
+  {
+    "objectID": "computations-r.html#air-quality",
+    "href": "computations-r.html#air-quality",
+    "title": "Using R",
+    "section": "Air Quality",
+    "text": "Air Quality\nFigure 1 further explores the impact of temperature on ozone level.\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point()\n\n\n\n\nFigure 1: Temperature and ozone levelz."
+  },
+  {
     "objectID": "figures.html",
     "href": "figures.html",
     "title": "Figures",
@@ -74,7 +95,14 @@
     "href": "markdown-basics.html",
     "title": "Markdown Basics",
     "section": "",
-    "text": "Markdown Syntax\nOutput\n\n\n\n\n*italics* and **bold**\nitalics and bold\n\n\nsuperscript^2^ / subscript~2~\nsuperscript2 / subscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
+    "text": "Figures"
+  },
+  {
+    "objectID": "markdown-basics.html#text-formatting",
+    "href": "markdown-basics.html#text-formatting",
+    "title": "Markdown Basics",
+    "section": "Text Formatting",
+    "text": "Text Formatting\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n*italics* and **bold**\nitalics and bold\n\n\nsuperscript^2^ / subscript~2~\nsuperscript2 / subscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
   },
   {
     "objectID": "markdown-basics.html#headings",
@@ -145,26 +173,5 @@
     "title": "Markdown Basics",
     "section": "Other Blocks",
     "text": "Other Blocks\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n> Blockquote\n\nBlockquote\n\n\n\n::: {.classname}\nDiv\n:::\nNot Yet Supported\n\n\n| Line Block\n|   Spaces and newlines\n|   are preserved\nNot Yet Supported\n\n\n\n\nSpecial Characters\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\nendash: --\nendash: –\n\n\nemdash: ---\nemdash: —"
-  },
-  {
-    "objectID": "computations-python.html",
-    "href": "computations-python.html",
-    "title": "Using Python",
-    "section": "",
-    "text": "Quarto supports executable Python code blocks within markdown. This allows you to create fully reproducible documents and reports—the Python code required to produce your output is part of the document itself, and is automatically re-run whenever the document is rendered.\nIf you have Python and the jupyter package installed then you have all you need to render documents that contain embedded Python code (if you don’t, we’ll cover this in the installation section below). Next, we’ll cover the basics of creating and rendering documents with Python code blocks.\n\n\nCode blocks that use braces around the language name (e.g. ```{python}) are executable, and will be run by Quarto during render. Here is a simple example:\n---\nformat:\n  html:\n    code-fold: true\njupyter: python3\n---\n\nFor a demonstration of a line plot on a polar axis, see @fig-polar.\n\n```{python}\n#| label: fig-polar\n#| fig-cap: \"A line plot on a polar axis\"\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\nFor a demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
-  },
-  {
-    "objectID": "computations-r.html",
-    "href": "computations-r.html",
-    "title": "Using R",
-    "section": "",
-    "text": "Quarto is a multi-language, next generation version of R Markdown from RStudio, with many new features and capabilities. Like R Markdown, Quarto uses Knitr to execute R code, and is therefore able to render most existing Rmd files without modification.\nWe’ll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on Chunk Options and Output Formats below.\n\n\nCode blocks that use braces around the language name (e.g. ```{r}) are executable, and will be run by Quarto during render. Here is a simple example:\n---\ntitle: \"ggplot2 demo\"\nauthor: \"Norah Jones\"\ndate: \"5/22/2021\"\nformat: \n  html:\n    code-fold: true\n---\n\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: Temperature and ozone level.\n#| warning: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```"
-  },
-  {
-    "objectID": "computations-r.html#air-quality",
-    "href": "computations-r.html#air-quality",
-    "title": "Using R",
-    "section": "Air Quality",
-    "text": "Air Quality\nFigure 1 further explores the impact of temperature on ozone level.\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point()\n\n\n\n\nFigure 1: Temperature and ozone levelz."
   }
 ]

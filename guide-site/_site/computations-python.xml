@@ -2,7 +2,7 @@
 
 <p>Quarto supports executable Python code blocks within markdown. This allows you to create fully reproducible documents and reports—the Python code required to produce your output is part of the document itself, and is automatically re-run whenever the document is rendered.</p>
 
-<p>If you have Python and the <code>jupyter</code> package installed then you have all you need to render documents that contain embedded Python code (if you don’t, we’ll cover this in the <a href='#installation' title=''>installation</a> section below). Next, we’ll cover the basics of creating and rendering documents with Python code blocks.</p>
+<p>If you have Python and the <code>jupyter</code> package installed then you have all you need to render documents that contain embedded Python code (if you don’t, we’ll cover this in the <ac:link><ri:attachment ri:filename="installation"/><ac:plain-text-link-body><![CDATA[#installation]]></ac:plain-text-link-body></ac:link> section below). Next, we’ll cover the basics of creating and rendering documents with Python code blocks.</p>
 
 <h3 id="code-blocks">Code Blocks</h3>
 
@@ -43,7 +43,7 @@ plt.show()
         </ac:plain-text-body>
     </ac:structured-macro>
 
-<p>For a demonstration of a line plot on a polar axis, see <a href='#fig-polar' title=''>Figure 1</a>.</p>
+<p>For a demonstration of a line plot on a polar axis, see <ac:link><ri:attachment ri:filename="Figure 1"/><ac:plain-text-link-body><![CDATA[#fig-polar]]></ac:plain-text-link-body></ac:link>.</p>
 
 <div class="cell" execution_count="1">
 <ac:structured-macro
