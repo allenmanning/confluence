@@ -3,8 +3,6 @@ title: Markdown Basics
 validate-yaml: false
 ---
 
-[Figures](figures.qmd)
-
 ## Text Formatting
 
 +-----------------------------------+-------------------------------+
@@ -218,10 +216,10 @@ No support, yet, as it requires extension hooks to callouts in the Quarto CLI wh
 
 ### Special Characters
 
-+-----------------+---------------+
-| Markdown Syntax | Output        |
-+=================+===============+
-|     endash: --  | endash: --    |
-+-----------------+---------------+
-|     emdash: --- | emdash: ---   |
-+-----------------+---------------+
++-----------------+--------------+
+| Markdown Syntax | Output       |
++=================+==============+
+|     endash: --  | endash: --   |
++-----------------+--------------+
+|     emdash: --- | emdash: ---  |
++-----------------+--------------+
