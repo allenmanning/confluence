@@ -1,5 +1,5 @@
 ---
-title: Markdown Basics - Doc
+title: Markdown Basics
 validate-yaml: false
 ---
 
@@ -200,19 +200,19 @@ No support, yet, as it requires extension hooks to callouts in the Quarto CLI wh
 
 ## Other Blocks
 
-+-----------------------------+-------------------------+
-| Markdown Syntax             | Output                  |
-+=============================+=========================+
-|     > Blockquote            | > Blockquote            |
-+-----------------------------+-------------------------+
-|     ::: {.classname}        | Not Yet Supported       |
-|     Div                     |                         |
-|     :::                     |                         |
-+-----------------------------+-------------------------+
-|     | Line Block            | Not Yet Supported       |
-|     |   Spaces and newlines |                         |
-|     |   are preserved       |                         |
-+-----------------------------+-------------------------+
++-----------------------------+-------------------+
+| Markdown Syntax             | Output            |
++=============================+===================+
+|     > Blockquote            | > Blockquote      |
++-----------------------------+-------------------+
+|     ::: {.classname}        | Not Yet Supported |
+|     Div                     |                   |
+|     :::                     |                   |
++-----------------------------+-------------------+
+|     | Line Block            | Not Yet Supported |
+|     |   Spaces and newlines |                   |
+|     |   are preserved       |                   |
++-----------------------------+-------------------+
 
 ### Special Characters
 

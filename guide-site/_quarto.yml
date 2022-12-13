@@ -1,0 +1,5 @@
+project:
+  title: Quarto Guide - Site
+  type: confluence
+execute:
+  freeze: true

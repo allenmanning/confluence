@@ -1,5 +1,5 @@
 ---
-title: "Using Python - Doc"
+title: "Using Python"
 jupyter-language: "Python"
 ---
 

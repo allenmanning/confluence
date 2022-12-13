@@ -500,7 +500,6 @@ This content can be styled with a border
 
 
 
-
 ::: {style='border:solid'}
 This content can be styled with a border
 :::
@@ -546,7 +545,7 @@ Fences without attributes are always closing fences. Unlike with fenced code blo
 <table>
 <colgroup>
 <col width="42%" />
-<col width="36%" />
+<col width="28%" />
 </colgroup>
 <tr class="header">
 <th align="left"><p style="text-align: left;">Markdown Syntax</p></th>

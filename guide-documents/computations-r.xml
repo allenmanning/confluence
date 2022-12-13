@@ -1,0 +1,71 @@
+<h2 id="overview">Overview</h2>
+
+<p>Quarto is a multi-language, next generation version of R Markdown from RStudio, with many new features and capabilities. Like R Markdown, Quarto uses <a href='https://yihui.org/knitr/' title=''>Knitr</a> to execute R code, and is therefore able to render most existing Rmd files without modification.</p>
+
+<p>We’ll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on <ac:link><ri:attachment ri:filename="Chunk Options"/><ac:plain-text-link-body><![CDATA[#chunk-options]]></ac:plain-text-link-body></ac:link> and <ac:link><ri:attachment ri:filename="Output Formats"/><ac:plain-text-link-body><![CDATA[#output-formats]]></ac:plain-text-link-body></ac:link> below.</p>
+
+<h3 id="code-blocks">Code Blocks</h3>
+
+<p>Code blocks that use braces around the language name (e.g. <code>```{r}</code>) are executable, and will be run by Quarto during render. Here is a simple example:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[---
+title: "ggplot2 demo"
+author: "Norah Jones"
+date: "5/22/2021"
+format: 
+  html:
+    code-fold: true
+---
+
+## Air Quality
+
+@fig-airquality further explores the impact of temperature on ozone level.
+
+```{r}
+#| label: fig-airquality
+#| fig-cap: Temperature and ozone level.
+#| warning: false
+
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<h2 id="air-quality">Air Quality</h2>
+
+<p><ac:link><ri:attachment ri:filename="Figure 1"/><ac:plain-text-link-body><![CDATA[#fig-airquality]]></ac:plain-text-link-body></ac:link> further explores the impact of temperature on ozone level.</p>
+
+<div class="cell">
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">r cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div class="cell-output-display">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="computations-r_files/figure-publish/fig-airquality-1.png" /><ac:caption>
+            <p>Figure 1: Temperature and ozone level.</p>
+        </ac:caption>
+    </ac:image></div></div>

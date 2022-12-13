@@ -1,0 +1,12 @@
+---
+title: "Guide Testing"
+---
+
+## Links
+[Figures](figures.qmd)
+
+[Python: Code Blocks](computations-python.qmd#Code-Blocks)
+
+[Python: Lower Anchor](computations-python.qmd#lower-anchor)
+
+[Python: Fig Polar](computations-python.qmd#fig-polar)
