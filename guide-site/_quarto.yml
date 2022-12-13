@@ -1,5 +1,5 @@
 project:
-  title: "Confluence Site"
+  title: Quarto Guide - Site
   type: confluence
 execute:
   freeze: true

@@ -1,5 +1,5 @@
 ---
-title: Markdown Basics
+title: Markdown Basics - Doc
 validate-yaml: false
 ---
 

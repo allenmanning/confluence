@@ -2,7 +2,7 @@
 
 <p>Quarto is a multi-language, next generation version of R Markdown from RStudio, with many new features and capabilities. Like R Markdown, Quarto uses <a href='https://yihui.org/knitr/' title=''>Knitr</a> to execute R code, and is therefore able to render most existing Rmd files without modification.</p>
 
-<p>We’ll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on <a href='#chunk-options' title=''>Chunk Options</a> and <a href='#output-formats' title=''>Output Formats</a> below.</p>
+<p>We’ll start by covering the basics of Quarto, then delve into the differences between Quarto and R Markdown in the sections on <ac:link><ri:attachment ri:filename="Chunk Options"/><ac:plain-text-link-body><![CDATA[#chunk-options]]></ac:plain-text-link-body></ac:link> and <ac:link><ri:attachment ri:filename="Output Formats"/><ac:plain-text-link-body><![CDATA[#output-formats]]></ac:plain-text-link-body></ac:link> below.</p>
 
 <h3 id="code-blocks">Code Blocks</h3>
 
@@ -43,7 +43,7 @@ ggplot(airquality, aes(Temp, Ozone)) +
 
 <h2 id="air-quality">Air Quality</h2>
 
-<p><a href='#fig-airquality' title=''>Figure 1</a> further explores the impact of temperature on ozone level.</p>
+<p><ac:link><ri:attachment ri:filename="Figure 1"/><ac:plain-text-link-body><![CDATA[#fig-airquality]]></ac:plain-text-link-body></ac:link> further explores the impact of temperature on ozone level.</p>
 
 <div class="cell">
 <ac:structured-macro
