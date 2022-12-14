@@ -562,9 +562,7 @@ Fences without attributes are always closing fences. Unlike with fenced code blo
           <![CDATA[> Blockquote]]>
         </ac:plain-text-body>
     </ac:structured-macro></p></td>
-<td align="left"><p style="text-align: left;"><blockquote>
-<p>Blockquote</p>
-</blockquote></p></td>
+<td align="left"><p style="text-align: left;"><blockquote><p>Blockquote</p></blockquote></p></td>
 </tr>
 <tr class="even">
 <td align="left"><p style="text-align: left;"><ac:structured-macro
