@@ -71,9 +71,7 @@
     ac:layout="align-end"
     ac:alt="">
         <ri:attachment ri:filename="elephant.png" />
-    </ac:image>
-<!-- // NOTE:  Must have carrige return or else this will be emitted as an Image and not a Captioned Image -->
-<ac:image
+    </ac:image> <!-- // NOTE:  Must have carrige return or else this will be emitted as an Image and not a Captioned Image --> <ac:image
     ac:align="left"
     ac:layout="align-start"
     ac:alt="">
@@ -422,17 +420,73 @@ Elephant
 
 <h2 id="computations">Computations</h2>
 
-<h4 id="knitr">Knitr</h4>
+<h4 id="jupyter">Jupyter</h4>
 
-<p>`` {r}
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{python}
 #| layout-ncol: 2
-#| fig-cap:
-#| - &ldquo;Speed and Stopping Distances of Cars&rdquo;
-#| - &ldquo;Vapor Pressure of Mercury as a Function of Temperature&rdquo;</p>
+#| fig-cap: 
+#|   - "Line Plot 1"
+#|   - "Line Plot 2"
 
-<p>plot(cars)
-plot(pressure)
-``</p>
+import matplotlib.pyplot as plt
+plt.plot([1,23,2,4])
+plt.show()
+
+plt.plot([8,65,23,90])
+plt.show()
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div>
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">python cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[import matplotlib.pyplot as plt
+plt.plot([1,23,2,4])
+plt.show()
+
+plt.plot([8,65,23,90])
+plt.show()]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div execution_count="1">
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tr class="odd">
+<td align="center"><p style="text-align: center;"><div class="cell-output cell-output-display" width="50.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="figures_files/figure-publish/cell-2-output-1.png" /><ac:caption>
+            <p>Line Plot 1</p>
+        </ac:caption>
+    </ac:image></div></p></td>
+<td align="center"><p style="text-align: center;"><div class="cell-output cell-output-display" width="50.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="figures_files/figure-publish/cell-2-output-2.png" /><ac:caption>
+            <p>Line Plot 2</p>
+        </ac:caption>
+    </ac:image></div></p></td>
+</tr>
+</table></div></div>
 
 <p>Note that in these examples we also use the <code>fig-cap</code> option to apply a caption to each of the generated figures.</p>
 
