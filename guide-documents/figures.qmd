@@ -214,38 +214,79 @@ No Support
 
 ## Computations
 
-#### Jupyter
-``` {{python}}
+#### Knitr
+
+``` {{r}}
 #| layout-ncol: 2
 #| fig-cap: 
-#|   - "Line Plot 1"
-#|   - "Line Plot 2"
+#|   - "Speed and Stopping Distances of Cars"
+#|   - "Vapor Pressure of Mercury as a Function of Temperature"
 
-import matplotlib.pyplot as plt
-plt.plot([1,23,2,4])
-plt.show()
-
-plt.plot([8,65,23,90])
-plt.show()
+plot(cars)
+plot(pressure)
 ```
 
-
-```{python}
+```{r}
 #| layout-ncol: 2
 #| fig-cap: 
-#|   - "Line Plot 1"
-#|   - "Line Plot 2"
+#|   - "Speed and Stopping Distances of Cars"
+#|   - "Vapor Pressure of Mercury as a Function of Temperature"
 
-import matplotlib.pyplot as plt
-plt.plot([1,23,2,4])
-plt.show()
-
-plt.plot([8,65,23,90])
-plt.show()
+plot(cars)
+plot(pressure)
 ```
 
 Note that in these examples we also use the `fig-cap` option to apply a caption to each of the generated figures.
 
+### Subcaptions
+
+You can create subcaptions for computational output by combining the the `fig-cap` and `fig-subcap` options. When applying captions to computational output you can optionally include a `label` with a `fig-` prefix---if you do this then the figure will be numbered and [cross-referenceable](cross-references.qmd).
+
+#### Knitr
+
+``` {{r}}
+#| label: fig-charts
+#| fig-cap: Charts
+#| fig-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+
+plot(cars)
+plot(pressure)
+```
+
+```{r}
+#| label: fig-charts
+#| fig-cap: Charts
+#| fig-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+
+plot(cars)
+plot(pressure)
+```
+
+### Custom Layout
+
+[Not Yet Supported]{style="color:orange"}
+
+``` {{r}}
+#| layout: [[45,-10, 45], [100]]
+
+plot(cars)
+plot(pressure)
+plot(mtcars)
+```
+
+```{r}
+#| layout: [[45,-10, 45], [100]]
+
+plot(cars)
+plot(pressure)
+plot(mtcars)
+```
 
 ## Block Layout
 

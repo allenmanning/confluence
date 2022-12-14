@@ -420,7 +420,7 @@ Elephant
 
 <h2 id="computations">Computations</h2>
 
-<h4 id="jupyter">Jupyter</h4>
+<h4 id="knitr">Knitr</h4>
 
 <ac:structured-macro
       ac:name="code"
@@ -428,18 +428,14 @@ Elephant
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
         <ac:parameter ac:name="language">markdown</ac:parameter>
         <ac:plain-text-body>
-          <![CDATA[```{python}
+          <![CDATA[```{r}
 #| layout-ncol: 2
 #| fig-cap: 
-#|   - "Line Plot 1"
-#|   - "Line Plot 2"
+#|   - "Speed and Stopping Distances of Cars"
+#|   - "Vapor Pressure of Mercury as a Function of Temperature"
 
-import matplotlib.pyplot as plt
-plt.plot([1,23,2,4])
-plt.show()
-
-plt.plot([8,65,23,90])
-plt.show()
+plot(cars)
+plot(pressure)
 ```]]>
         </ac:plain-text-body>
     </ac:structured-macro>
@@ -449,46 +445,185 @@ plt.show()
       ac:name="code"
       ac:schema-version="1"
       ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
-        <ac:parameter ac:name="language">python cell-code</ac:parameter>
+        <ac:parameter ac:name="language">r cell-code</ac:parameter>
         <ac:plain-text-body>
-          <![CDATA[import matplotlib.pyplot as plt
-plt.plot([1,23,2,4])
-plt.show()
-
-plt.plot([8,65,23,90])
-plt.show()]]>
+          <![CDATA[plot(cars)
+plot(pressure)]]>
         </ac:plain-text-body>
     </ac:structured-macro>
 
-<div execution_count="1">
+<div>
 <table>
 <colgroup>
 <col width="50%" />
 <col width="50%" />
 </colgroup>
 <tr class="odd">
-<td align="center"><p style="text-align: center;"><div class="cell-output cell-output-display" width="50.0%" layout-align="center">
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="50.0%" layout-align="center">
 <ac:image
     ac:align="center"
     ac:layout="center"
     ac:alt="fig:">
-        <ri:attachment ri:filename="figures_files/figure-publish/cell-2-output-1.png" /><ac:caption>
-            <p>Line Plot 1</p>
+        <ri:attachment ri:filename="figures_files/figure-publish/unnamed-chunk-1-1.png" /><ac:caption>
+            <p>Speed and Stopping Distances of Cars</p>
         </ac:caption>
     </ac:image></div></p></td>
-<td align="center"><p style="text-align: center;"><div class="cell-output cell-output-display" width="50.0%" layout-align="center">
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="50.0%" layout-align="center">
 <ac:image
     ac:align="center"
     ac:layout="center"
     ac:alt="fig:">
-        <ri:attachment ri:filename="figures_files/figure-publish/cell-2-output-2.png" /><ac:caption>
-            <p>Line Plot 2</p>
+        <ri:attachment ri:filename="figures_files/figure-publish/unnamed-chunk-1-2.png" /><ac:caption>
+            <p>Vapor Pressure of Mercury as a Function of Temperature</p>
         </ac:caption>
     </ac:image></div></p></td>
 </tr>
 </table></div></div>
 
 <p>Note that in these examples we also use the <code>fig-cap</code> option to apply a caption to each of the generated figures.</p>
+
+<h3 id="subcaptions">Subcaptions</h3>
+
+<p>You can create subcaptions for computational output by combining the the <code>fig-cap</code> and <code>fig-subcap</code> options. When applying captions to computational output you can optionally include a <code>label</code> with a <code>fig-</code> prefix—if you do this then the figure will be numbered and <a href='cross-references.qmd' title=''>cross-referenceable</a>.</p>
+
+<h4 id="knitr-1">Knitr</h4>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{r}
+#| label: fig-charts
+#| fig-cap: Charts
+#| fig-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+
+plot(cars)
+plot(pressure)
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div>
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">r cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[plot(cars)
+plot(pressure)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tr class="odd">
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="50.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="figures_files/figure-publish/fig-charts-1.png" /><ac:caption>
+            <p>(a) Cars</p>
+        </ac:caption>
+    </ac:image></div></p></td>
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="50.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="fig:">
+        <ri:attachment ri:filename="figures_files/figure-publish/fig-charts-2.png" /><ac:caption>
+            <p>(b) Pressure</p>
+        </ac:caption>
+    </ac:image></div></p></td>
+</tr>
+</table>
+
+<p>Figure 3: Charts</p></div></div>
+
+<h3 id="custom-layout">Custom Layout</h3>
+
+<p><span style="color:orange">Not Yet Supported</span></p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{r}
+#| layout: [[45,-10, 45], [100]]
+
+plot(cars)
+plot(pressure)
+plot(mtcars)
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div>
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">r cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[plot(cars)
+plot(pressure)
+plot(mtcars)]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="10%" />
+<col width="45%" />
+</colgroup>
+<tr class="odd">
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="45.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="">
+        <ri:attachment ri:filename="figures_files/figure-publish/unnamed-chunk-3-1.png" />
+    </ac:image></div></p></td>
+<td align="center"><p style="text-align: center;"><div class="quarto-figure-spacer" width="10.0%" layout-align="center">
+<p> </p></div></p></td>
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="45.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="">
+        <ri:attachment ri:filename="figures_files/figure-publish/unnamed-chunk-3-2.png" />
+    </ac:image></div></p></td>
+</tr>
+</table>
+
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tr class="odd">
+<td align="center"><p style="text-align: center;"><div class="cell-output-display" width="100.0%" layout-align="center">
+<ac:image
+    ac:align="center"
+    ac:layout="center"
+    ac:alt="">
+        <ri:attachment ri:filename="figures_files/figure-publish/unnamed-chunk-3-3.png" />
+    </ac:image></div></p></td>
+</tr>
+</table></div></div>
 
 <h2 id="block-layout">Block Layout</h2>
 
