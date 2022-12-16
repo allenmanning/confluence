@@ -46,5 +46,7 @@ luac.out
 *.pdf
 *_files/
 /_*.local
+/guide-site/_freeze
+/guide-documents/_freeze
 
 /.luarc.json
