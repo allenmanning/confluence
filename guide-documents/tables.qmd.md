@@ -1,0 +1,257 @@
+---
+title: "Tables"
+engine: jupyter
+---
+
+## Overview
+
+Quarto includes a number of features aimed at making it easy to to author and customize markdown table output, including:
+
+-   Specifying column alignment and widths.
+-   Providing captions, subcaptions, and cross-references.
+-   Generating tables dynamically from executable code cells.
+
+This article covers using these features in-depth.
+
+## Markdown Tables
+
+The most commonly used markdown table is known as a pipe table. Pipe tables support specifying per column alignment as well as captions. For example:
+
+``` markdown
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+
+: Demonstration of pipe table syntax
+```
+
+Here is the table rendered to HTML:
+
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+
+: Demonstration of pipe table syntax
+
+The beginning and ending pipe characters are optional, but pipes are required between all columns. The colons indicate column alignment as shown. The header cannot be omitted, however you can simulate a headerless table by including a header with blank cells.
+
+Since the pipes indicate column boundaries, columns need not be vertically aligned, as they are in the above example. So, this is a perfectly legal (though ugly) pipe table:
+
+``` markdown
+fruit| price
+-----|-----:
+apple|2.05
+pear|1.37
+orange|3.09
+```
+
+The cells of pipe tables cannot contain block elements like paragraphs and lists, and cannot span multiple lines. If a pipe table contains a row whose markdown content is wider than the column width (see `columns` option), then the table will take up the full text width and the cell contents will wrap, with the relative cell widths determined by the number of dashes in the line separating the table header from the table body.
+
+For example `---|-` would make the first column 3/4 and the second column 1/4 of the full text width. On the other hand, if no lines are wider than column width, then cell contents will not be wrapped, and the cells will be sized to their contents.
+
+### Authoring
+
+For simple tables with only a few cells it's straightforward to create them directly in markdown. As tables get larger, it makes sense to use an authoring tool. Some table authoring tools to consider include:
+
++------------------------------------------------------------------------+---------------------------------------------------------------+
+| [TablesGenerator](https://tablesgenerator.com/markdown_tables)         | Online tool for generating markdown tables                    |
++------------------------------------------------------------------------+---------------------------------------------------------------+
+| [Emacs TableMode](https://www.emacswiki.org/emacs/TableMode)           | Text based table creation and editing capabilities for Emacs. |
++------------------------------------------------------------------------+---------------------------------------------------------------+
+| [Quarto Visual Editor](/docs/visual-editor/content.qmd#editing-tables) | Visual editor for `.qmd` files with table editing support.    |
++------------------------------------------------------------------------+---------------------------------------------------------------+
+
+: {tbl-colwidths="\[35,65\]"}
+
+## Column Widths
+
+Above we describe a means of specifying column widths using the relative number of dashes in each column header (e.g. `---|-` to get a 75% / 25% split for a two-column table).
+
+You can also explicitly specify columns widths using the `tbl-colwidths` attribute or document-level option. For an individual markdown table, add the attribute after the caption. For example:
+
+``` markdown
+| fruit  | price  |
+|--------|--------|
+| apple  | 2.05   |
+| pear   | 1.37   |
+| orange | 3.09   |
+
+: Fruit prices {tbl-colwidths="[75,25]"}
+```
+
+If your table doesn't have a caption, then you can still specify only `tbl-colwidths`:
+
+``` markdown
+: {tbl-colwidths="[75,25]"}
+```
+
+Column widths can also be specified at the document level (e.g. to have uniform widths across a set of tables):
+
+``` yaml
+---
+title: "My Document"
+format: html
+tbl-colwidths: [75,25]
+---
+```
+
+## Cross References
+
+For tables produced by executable code cells, include a label with a `tbl-` prefix to make them cross-referenceable. For example:
+
+```{python}
+#| label: tbl-planets
+#| tbl-cap: "Planets"
+#| echo: fenced
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",3390,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+
+::: callout-important
+## Label Prefix
+
+In order for a table to be cross-referenceable, its label must start with the `tbl-` prefix.
+:::
+
+{{< include _table-crossrefs.md >}} 
+
+## Caption Location
+
+By default, table captions are positioned above tables. You can modify this behavior using the `tbl-cap-location` option. For example:
+
+``` yaml
+---
+tbl-cap-location: top
+---
+```
+
+Note that this option is specified at the top level so that it can be shared by both PDF and HTML formats. If you are only targeting a single format you can place it alongside other `format` specific options.
+
+Valid values for the caption location include:
+
+| Value    | Description                           |
+|----------|---------------------------------------|
+| `top`    | Position the caption above the table. |
+| `bottom` | Position the caption below the table. |
+| `margin` | Position the caption in the margin.   |
+
+See the article on [Article Layout](article-layout.qmd#margin-captions) for additional details on placing captions in the margin.
+
+## Computations
+
+All of the options described above work for tables produced by executable code cells. For example, here we use the Python [tabulate](https://pypi.org/project/tabulate/) package along with the `Markdown()` function from the IPython [display](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#) module to print a markdown table:
+
+```{python}
+#| label: tbl-planet-measures
+#| tbl-cap: "Planets"
+#| echo: fenced
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",3390,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+
+Here we apply the `tbl-cap` and `tbl-colwidths` options to a code cell that uses the knitr `kable()` function to write a markdown table:
+
+``` {{r}}
+#| label: tbl-cars
+#| tbl-cap: "Cars"
+#| tbl-colwidths: [60,40]
+
+library(knitr)
+kable(head(cars))
+```
+
+If your code cell produces multiple tables, you can also specify subcaptions and layout using cell options:
+
+``` {{r}}
+#| label: tbl-example
+#| tbl-cap: "Example"
+#| tbl-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+#| echo: fenced
+
+library(knitr)
+kable(head(cars))
+kable(head(pressure))
+```
+
+## Grid Tables
+
+Grid tables are a more advanced type of markdown tables that allow arbitrary block elements (multiple paragraphs, code blocks, lists, etc.). For example:
+
+``` markdown
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - tasty            |
++---------------+---------------+--------------------+
+
+: Sample grid table.
+```
+
+The row of `=`s separates the header from the table body, and can be omitted for a headerless table. Cells that span multiple columns or rows are not supported.
+
+This is what the table looks like when rendered to markdown:
+
++---------------+---------------+----------------------+
+| Fruit         | Price         | Advantages           |
++===============+===============+======================+
+| Bananas       | \$1.34        | -   built-in wrapper |
+|               |               | -   bright color     |
++---------------+---------------+----------------------+
+| Oranges       | \$2.10        | -   cures scurvy     |
+|               |               | -   tasty            |
++---------------+---------------+----------------------+
+
+: Sample grid table.
+
+Alignments can be specified as with pipe tables, by putting colons at the boundaries of the separator line after the header:
+
+``` markdown
++---------------+---------------+--------------------+
+| Right         | Left          | Centered           |
++==============:+:==============+:==================:+
+| Bananas       | $1.34         | built-in wrapper   |
++---------------+---------------+--------------------+
+```
+
+For headerless tables, the colons go on the top line instead:
+
+``` markdown
++--------------:+:--------------+:------------------:+
+| Right         | Left          | Centered           |
++---------------+---------------+--------------------+
+```
+
+Note that grid tables are quite awkward to write with a plain text editor (because unlike pipe tables, the column indicators must align). Here are some tools that can assist with creating grid tables:
+
+-   Emacs' [table-mode](https://www.gnu.org/software/emacs/manual/html_node/emacs/Text-Based-Tables.html) (`M-x table-insert`)
+
+-   Quarto [Visual Editor](https://quarto.org/docs/visual-editor/content.html#editing-tables)
