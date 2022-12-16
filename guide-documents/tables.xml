@@ -126,7 +126,7 @@ orange|3.09]]>
 
 <h2 id="column-widths">Column Widths</h2>
 
-<p><span style="color:orange">Not Yet Supported - Confluence ignores %-based styling</span></p>
+<p><a href='https://github.com/allenmanning/confluence/issues/24' title=''>Not Yet Supported - Confluence parses-out %-based styling when saving to CFT</a></p>
 
 <p>Above we describe a means of specifying column widths using the relative number of dashes in each column header (e.g. <code>---|-</code> to get a 75% / 25% split for a two-column table).</p>
 
@@ -183,3 +183,230 @@ orange|3.09]]>
           <![CDATA[: {tbl-colwidths="[75,25]"}]]>
         </ac:plain-text-body>
     </ac:structured-macro>
+
+<h2 id="cross-references">Cross References</h2>
+
+<p><a href='https://github.com/allenmanning/confluence/issues/25' title=''>Not Yet Supported - Table Cross References</a></p>
+
+<p>For tables produced by executable code cells, include a label with a <code>tbl-</code> prefix to make them cross-referenceable. For example:</p>
+
+<div class="cell" execution_count="1">
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{python}
+#| label: tbl-planets
+#| tbl-cap: Planets
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",3390,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div class="cell-output cell-output-display" execution_count="3">
+<div id="tbl-planets">
+<table>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Planet</p></th>
+<th align="right"><p style="text-align: right;">R (km)</p></th>
+<th align="right"><p style="text-align: right;">mass (x 10^29 kg)</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">Sun</p></td>
+<td align="right"><p style="text-align: right;">696000</p></td>
+<td align="right"><p style="text-align: right;">1.9891e+09</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">Earth</p></td>
+<td align="right"><p style="text-align: right;">6371</p></td>
+<td align="right"><p style="text-align: right;">5973.6</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">Moon</p></td>
+<td align="right"><p style="text-align: right;">1737</p></td>
+<td align="right"><p style="text-align: right;">73.5</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">Mars</p></td>
+<td align="right"><p style="text-align: right;">3390</p></td>
+<td align="right"><p style="text-align: right;">641.85</p></td>
+</tr>
+</table>
+<p>Table 1: Planets</p></div></div></div>
+
+<div>
+<blockquote><p><strong>Label Prefix</strong></p>
+
+<p>In order for a table to be cross-referenceable, its label must start with the <code>tbl-</code> prefix.</p></blockquote></div>
+
+<p>For markdown tables, add a caption below the table, then include a <code>#tbl-</code> label in braces at the end of the caption. For example:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: My Caption {#tbl-letters}
+
+See @tbl-letters.]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>Which looks like this when rendered to HTML:</p>
+
+<div id="tbl-letters">
+<table>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Col1</p></th>
+<th align="left"><p style="text-align: left;">Col2</p></th>
+<th align="left"><p style="text-align: left;">Col3</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">B</p></td>
+<td align="left"><p style="text-align: left;">C</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">E</p></td>
+<td align="left"><p style="text-align: left;">F</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+</table>
+<p>Table 2: My Caption</p></div>
+
+<p>See <ac:link><ri:attachment ri:filename="Table 2"/><ac:plain-text-link-body><![CDATA[#tbl-letters]]></ac:plain-text-link-body></ac:link>.</p>
+
+<h3 id="subtables">Subtables</h3>
+
+<p>You may want to create a composition of several sub-tables. To do this, create a div with a main identifier, then apply sub-identifiers (and optional caption text) to the contained tables. For example:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[::: {#tbl-panel layout-ncol=2}
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: First Table {#tbl-first}
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: Second Table {#tbl-second}
+
+Main Caption
+:::
+
+See @tbl-panel for details, especially @tbl-second.]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>Which looks like this when rendered to HTML:</p>
+
+<div>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tr class="odd">
+<td align="center"><p style="text-align: center;"><div id="tbl-first" ref-parent="tbl-panel" width="50.0%" layout-align="center">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Col1</p></th>
+<th align="left"><p style="text-align: left;">Col2</p></th>
+<th align="left"><p style="text-align: left;">Col3</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">B</p></td>
+<td align="left"><p style="text-align: left;">C</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">E</p></td>
+<td align="left"><p style="text-align: left;">F</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+</table>
+<p>(a) First Table</p></div></p></td>
+<td align="center"><p style="text-align: center;"><div id="tbl-second" ref-parent="tbl-panel" width="50.0%" layout-align="center">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Col1</p></th>
+<th align="left"><p style="text-align: left;">Col2</p></th>
+<th align="left"><p style="text-align: left;">Col3</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">B</p></td>
+<td align="left"><p style="text-align: left;">C</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">E</p></td>
+<td align="left"><p style="text-align: left;">F</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">A</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+<td align="left"><p style="text-align: left;">G</p></td>
+</tr>
+</table>
+<p>(b) Second Table</p></div></p></td>
+</tr>
+</table>
+
+<p>Table 3: Main Caption</p></div>
+
+<p>See <ac:link><ri:attachment ri:filename="Table 3"/><ac:plain-text-link-body><![CDATA[#tbl-panel]]></ac:plain-text-link-body></ac:link> for details, especially <ac:link><ri:attachment ri:filename="Table 3 (b)"/><ac:plain-text-link-body><![CDATA[#tbl-second]]></ac:plain-text-link-body></ac:link>.</p>
+
+<p>Note that the &ldquo;Main Caption&rdquo; for the table is provided as the last block within the containing div.</p>

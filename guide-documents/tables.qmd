@@ -73,7 +73,8 @@ For simple tables with only a few cells it's straightforward to create them dire
 
 ## Column Widths
 
-[Not Yet Supported - Confluence parses-out %-based styling when saving to CFT](https://github.com/allenmanning/confluence/issues/24){style="color:orange"}
+[Not Yet Supported - Confluence parses-out %-based styling when saving to CFT]{style="color:orange"}
+[24](https://github.com/allenmanning/confluence/issues/24)
 
 Above we describe a means of specifying column widths using the relative number of dashes in each column header (e.g. `---|-` to get a 75% / 25% split for a two-column table).
 
@@ -102,3 +103,34 @@ If your table doesn't have a caption, then you can still specify only `tbl-colwi
 ``` markdown
 : {tbl-colwidths="[75,25]"}
 ```
+
+## Cross References
+[Not Yet Supported - Table Cross References]{style="color:orange"}
+[25](https://github.com/allenmanning/confluence/issues/25)
+
+For tables produced by executable code cells, include a label with a `tbl-` prefix to make them cross-referenceable. For example:
+
+```{python}
+#| label: tbl-planets
+#| tbl-cap: "Planets"
+#| echo: fenced
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",3390,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+
+::: callout-important
+## Label Prefix
+
+In order for a table to be cross-referenceable, its label must start with the `tbl-` prefix.
+:::
+
+{{< include _table-crossrefs.md >}}
