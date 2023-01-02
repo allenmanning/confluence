@@ -134,3 +134,77 @@ In order for a table to be cross-referenceable, its label must start with the `t
 :::
 
 {{< include _table-crossrefs.md >}}
+
+## Caption Location
+[Not Yet Supported - Caption Location]{style="color:orange"}
+[26](https://github.com/allenmanning/confluence/issues/26)
+
+By default, table captions are positioned above tables. You can modify this behavior using the `tbl-cap-location` option. For example:
+
+``` yaml
+---
+tbl-cap-location: top
+---
+```
+
+Note that this option is specified at the top level so that it can be shared by both PDF and HTML formats. If you are only targeting a single format you can place it alongside other `format` specific options.
+
+Valid values for the caption location include:
+
+| Value    | Description                           |
+|----------|---------------------------------------|
+| `top`    | Position the caption above the table. |
+| `bottom` | Position the caption below the table. |
+| `margin` | Position the caption in the margin.   |
+
+See the article on [Article Layout](article-layout.qmd#margin-captions) for additional details on placing captions in the margin.
+
+## Computations
+
+All of the options described above work for tables produced by executable code cells. For example, here we use the Python [tabulate](https://pypi.org/project/tabulate/) package along with the `Markdown()` function from the IPython [display](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#) module to print a markdown table:
+
+```{python}
+#| label: tbl-planet-measures
+#| tbl-cap: "Planets"
+#| echo: fenced
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",3390,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+
+
+Here we apply the `tbl-cap` and `tbl-colwidths` options to a code cell that uses the knitr `kable()` function to write a markdown table:
+
+``` {{r}}
+#| label: tbl-cars
+#| tbl-cap: "Cars"
+#| tbl-colwidths: [60,40]
+
+library(knitr)
+kable(head(cars))
+```
+
+If your code cell produces multiple tables, you can also specify subcaptions and layout using cell options:
+
+``` {{r}}
+#| label: tbl-example
+#| tbl-cap: "Example"
+#| tbl-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+#| echo: fenced
+
+library(knitr)
+kable(head(cars))
+kable(head(pressure))
+```
+

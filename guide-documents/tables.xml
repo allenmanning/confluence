@@ -126,7 +126,8 @@ orange|3.09]]>
 
 <h2 id="column-widths">Column Widths</h2>
 
-<p><a href='https://github.com/allenmanning/confluence/issues/24' title=''>Not Yet Supported - Confluence parses-out %-based styling when saving to CFT</a></p>
+<p><span style="color:orange">Not Yet Supported - Confluence parses-out %-based styling when saving to CFT</span>
+<a href='https://github.com/allenmanning/confluence/issues/24' title=''>24</a></p>
 
 <p>Above we describe a means of specifying column widths using the relative number of dashes in each column header (e.g. <code>---|-</code> to get a 75% / 25% split for a two-column table).</p>
 
@@ -186,7 +187,8 @@ orange|3.09]]>
 
 <h2 id="cross-references">Cross References</h2>
 
-<p><a href='https://github.com/allenmanning/confluence/issues/25' title=''>Not Yet Supported - Table Cross References</a></p>
+<p><span style="color:orange">Not Yet Supported - Table Cross References</span>
+<a href='https://github.com/allenmanning/confluence/issues/25' title=''>25</a></p>
 
 <p>For tables produced by executable code cells, include a label with a <code>tbl-</code> prefix to make them cross-referenceable. For example:</p>
 
@@ -216,7 +218,7 @@ Markdown(tabulate(
         </ac:plain-text-body>
     </ac:structured-macro>
 
-<div class="cell-output cell-output-display" execution_count="3">
+<div class="cell-output cell-output-display" execution_count="5">
 <div id="tbl-planets">
 <table>
 <tr class="header">
@@ -410,3 +412,151 @@ See @tbl-panel for details, especially @tbl-second.]]>
 <p>See <ac:link><ri:attachment ri:filename="Table 3"/><ac:plain-text-link-body><![CDATA[#tbl-panel]]></ac:plain-text-link-body></ac:link> for details, especially <ac:link><ri:attachment ri:filename="Table 3 (b)"/><ac:plain-text-link-body><![CDATA[#tbl-second]]></ac:plain-text-link-body></ac:link>.</p>
 
 <p>Note that the &ldquo;Main Caption&rdquo; for the table is provided as the last block within the containing div.</p>
+
+<h2 id="caption-location">Caption Location</h2>
+
+<p><span style="color:orange">Not Yet Supported - Caption Location</span>
+<a href='https://github.com/allenmanning/confluence/issues/26' title=''>26</a></p>
+
+<p>By default, table captions are positioned above tables. You can modify this behavior using the <code>tbl-cap-location</code> option. For example:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">yaml</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[---
+tbl-cap-location: top
+---]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>Note that this option is specified at the top level so that it can be shared by both PDF and HTML formats. If you are only targeting a single format you can place it alongside other <code>format</code> specific options.</p>
+
+<p>Valid values for the caption location include:</p>
+
+<table>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Value</p></th>
+<th align="left"><p style="text-align: left;">Description</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;"><code>top</code></p></td>
+<td align="left"><p style="text-align: left;">Position the caption above the table.</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;"><code>bottom</code></p></td>
+<td align="left"><p style="text-align: left;">Position the caption below the table.</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;"><code>margin</code></p></td>
+<td align="left"><p style="text-align: left;">Position the caption in the margin.</p></td>
+</tr>
+</table>
+
+<p>See the article on <a href='article-layout.qmd#margin-captions' title=''>Article Layout</a> for additional details on placing captions in the margin.</p>
+
+<h2 id="computations">Computations</h2>
+
+<p>All of the options described above work for tables produced by executable code cells. For example, here we use the Python <a href='https://pypi.org/project/tabulate/' title=''>tabulate</a> package along with the <code>Markdown()</code> function from the IPython <a href='https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#' title=''>display</a> module to print a markdown table:</p>
+
+<div class="cell" execution_count="2">
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown cell-code</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{python}
+#| label: tbl-planet-measures
+#| tbl-cap: Planets
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun",696000,1989100000],
+         ["Earth",6371,5973.6],
+         ["Moon",1737,73.5],
+         ["Mars",1111,641.85]]
+Markdown(tabulate(
+  table, 
+  headers=["Planet","R (km)", "mass (x 10^29 kg)"]
+))
+```
+]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<div class="cell-output cell-output-display" execution_count="6">
+<div id="tbl-planet-measures">
+<table>
+<tr class="header">
+<th align="left"><p style="text-align: left;">Planet</p></th>
+<th align="right"><p style="text-align: right;">R (km)</p></th>
+<th align="right"><p style="text-align: right;">mass (x 10^29 kg)</p></th>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">Sun</p></td>
+<td align="right"><p style="text-align: right;">696000</p></td>
+<td align="right"><p style="text-align: right;">1.9891e+09</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">Earth</p></td>
+<td align="right"><p style="text-align: right;">6371</p></td>
+<td align="right"><p style="text-align: right;">5973.6</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p style="text-align: left;">Moon</p></td>
+<td align="right"><p style="text-align: right;">1737</p></td>
+<td align="right"><p style="text-align: right;">73.5</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p style="text-align: left;">Mars</p></td>
+<td align="right"><p style="text-align: right;">1111</p></td>
+<td align="right"><p style="text-align: right;">641.85</p></td>
+</tr>
+</table>
+<p>Table 4: Planets</p></div></div></div>
+
+<p>Here we apply the <code>tbl-cap</code> and <code>tbl-colwidths</code> options to a code cell that uses the knitr <code>kable()</code> function to write a markdown table:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{r}
+#| label: tbl-cars
+#| tbl-cap: "Cars"
+#| tbl-colwidths: [60,40]
+
+library(knitr)
+kable(head(cars))
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
+
+<p>If your code cell produces multiple tables, you can also specify subcaptions and layout using cell options:</p>
+
+<ac:structured-macro
+      ac:name="code"
+      ac:schema-version="1"
+      ac:macro-id="1d1a2d13-0179-4d8f-b448-b28dfaceea4a">
+        <ac:parameter ac:name="language">markdown</ac:parameter>
+        <ac:plain-text-body>
+          <![CDATA[```{r}
+#| label: tbl-example
+#| tbl-cap: "Example"
+#| tbl-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+#| echo: fenced
+
+library(knitr)
+kable(head(cars))
+kable(head(pressure))
+```]]>
+        </ac:plain-text-body>
+    </ac:structured-macro>
