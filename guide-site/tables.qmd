@@ -1,5 +1,5 @@
 ---
-title: "Tables - Doc"
+title: "Tables"
 engine: jupyter
 ---
 
