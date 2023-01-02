@@ -1,7 +1,7 @@
 - source: markdown-basics.qmd
   confluence:
-    - id: '32735269'
-      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/32735269'
+    - id: '33849425'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/33849425'
 - source: computations-python.qmd
   confluence:
     - id: '32178204'
@@ -14,3 +14,7 @@
   confluence:
     - id: '32669787'
       url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/32669787'
+- source: tables.qmd
+  confluence:
+    - id: '32964644'
+      url: 'https://allenmanning.atlassian.net/wiki/spaces/QUARTOCONF/pages/32964644'
