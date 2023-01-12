@@ -1,0 +1,16 @@
+---
+title: "Links"
+---
+
+## Links
+[Links](links.qmd)
+
+[Figures](authoring/figures.qmd)
+
+[Tables: Subtables](authoring/tables.qmd#Subtables)
+
+[Python: Code Blocks](computations/python/computations-python.qmd#Code-Blocks)
+
+[Python: Lower Anchor](computations/python/computations-python.qmd#lower-anchor)
+
+[Python: Fig Polar](computations/python/computations-python.qmd#fig-polar)
