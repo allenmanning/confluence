@@ -118,10 +118,6 @@ orange|3.09]]>
 <td align="left"><p style="text-align: left;"><a href='https://www.emacswiki.org/emacs/TableMode' title=''>Emacs TableMode</a></p></td>
 <td align="left"><p style="text-align: left;">Text based table creation and editing capabilities for Emacs.</p></td>
 </tr>
-<tr class="odd">
-<td align="left"><p style="text-align: left;"><a href='/docs/visual-editor/content.qmd#editing-tables' title=''>Quarto Visual Editor</a></p></td>
-<td align="left"><p style="text-align: left;">Visual editor for <code>.qmd</code> files with table editing support.</p></td>
-</tr>
 </table>
 
 <h2 id="column-widths">Column Widths</h2>
@@ -454,8 +450,6 @@ tbl-cap-location: top
 <td align="left"><p style="text-align: left;">Position the caption in the margin.</p></td>
 </tr>
 </table>
-
-<p>See the article on <a href='article-layout.qmd#margin-captions' title=''>Article Layout</a> for additional details on placing captions in the margin.</p>
 
 <h2 id="computations">Computations</h2>
 

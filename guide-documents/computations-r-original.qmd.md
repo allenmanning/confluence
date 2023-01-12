@@ -39,15 +39,15 @@ ggplot(airquality, aes(Temp, Ozone)) +
 ```
 ````
 
-You'll note that there are some special comments at the top of the code block. These are cell level options that make the figure [cross-referenceable](../authoring/cross-references.qmd).
+[//]: # (You'll note that there are some special comments at the top of the code block. These are cell level options that make the figure [cross-referenceable]&#40;../authoring/cross-references.qmd&#41;.)
 
 This document results in the following rendered output:
 
-![](../../images/hello-knitr.png){.border fig-alt="Example output with title (ggplot2 demo), author (Norah Jones), and date (5/22/2021). Below is a header reading Air Quality followed by body text (Figure 1 further explores the impact of temperature on ozone level.) with a toggleable code field, and figure with caption that reads Figure 1 Temperature and ozone level."}
+[//]: # (![]&#40;../../images/hello-knitr.png&#41;{.border fig-alt="Example output with title &#40;ggplot2 demo&#41;, author &#40;Norah Jones&#41;, and date &#40;5/22/2021&#41;. Below is a header reading Air Quality followed by body text &#40;Figure 1 further explores the impact of temperature on ozone level.&#41; with a toggleable code field, and figure with caption that reads Figure 1 Temperature and ozone level."})
 
 You can produce a wide variety of output types from executable code blocks, including plots, tabular output from data frames, and plain text output (e.g. printing the results of statistical summaries).
 
-There are many options which control the behavior of code execution and output, you can read more about them in the article on [Execution Options](execution-options.qmd).
+[//]: # (There are many options which control the behavior of code execution and output, you can read more about them in the article on [Execution Options]&#40;execution-options.qmd&#41;.)
 
 ### Rendering
 
